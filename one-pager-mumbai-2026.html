@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Common Ground Mumbai 2026 — Partner Overview</title>
+  <meta name="description" content="A collaborative pop-up hub in Mumbai during India Blockchain Week 2026. Co-fund a space, run your programming, connect across the Ethereum ecosystem.">
+  <meta name="robots" content="noindex">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;0,800;0,900;1,900&family=Mulish:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ================================================================
+       DESIGN TOKENS
+       ================================================================ */
+    :root {
+      --dark-green:  #1c4532;
+      --mid-green:   #2d6a4f;
+      --teal:        #2b7a5c;
+      --light-green: #4fa87a;
+      --terracotta:  #c4503a;
+      --terra-light: #e8755d;
+      --cream:       #ede8dc;
+      --cream-light: #f5f1e8;
+      --cream-dark:  #e3ddd1;
+      --white:       #ffffff;
+      --barlow: 'Barlow', sans-serif;
+      --mulish: 'Mulish', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--mulish);
+      background: var(--cream);
+      color: var(--dark-green);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* ================================================================
+       NAV
+       ================================================================ */
+    .nav {
+      position: fixed; top: 1rem; left: 50%;
+      transform: translateX(-50%); z-index: 200;
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      display: flex; align-items: center; gap: 2.25rem;
+      padding: 0.5rem 0.625rem 0.5rem 1.5rem;
+      border-radius: 50px; border: 1px solid rgba(28,69,50,0.09);
+      white-space: nowrap; box-shadow: 0 2px 20px rgba(28,69,50,0.10);
+      transition: box-shadow 0.3s, background 0.3s;
+    }
+    .nav.scrolled { box-shadow: 0 4px 32px rgba(28,69,50,0.16); background: rgba(255,255,255,0.98); }
+
+    .nav-logo { display: flex; align-items: center; gap: 0.75rem; }
+    .nav-logo img { width: 2.25rem; height: 2.25rem; object-fit: contain; }
+    .nav-logo-text {
+      font-family: var(--barlow); font-size: 0.875rem;
+      font-weight: 700; color: var(--dark-green);
+    }
+
+    .nav-back {
+      font-family: var(--mulish); font-size: 0.8rem;
+      font-weight: 600; color: rgba(28,69,50,0.45);
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--dark-green); }
+
+    .nav-cta {
+      font-family: var(--barlow); font-size: 0.8125rem;
+      font-weight: 800; letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: var(--terracotta); color: var(--white);
+      padding: 0.5rem 1.25rem; border-radius: 50px;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--terra-light); color: var(--white); }
+
+    /* ================================================================
+       HERO
+       ================================================================ */
+    .hero {
+      padding-top: 5rem;
+      background: var(--cream) url('assets/hero-bg.svg') center / cover no-repeat;
+      position: relative; min-height: 72vh;
+      display: flex; flex-direction: column;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom,
+        rgba(237,232,220,0.28) 0%,
+        rgba(237,232,220,0.42) 45%,
+        rgba(237,232,220,0.88) 80%,
+        rgba(237,232,220,1.00) 100%);
+      pointer-events: none; z-index: 0;
+    }
+    .hero-inner {
+      flex: 1; max-width: 820px; margin: 0 auto; width: 100%;
+      padding: 2rem 2rem 1.5rem;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; position: relative; z-index: 1;
+    }
+    .hero-eyebrow {
+      font-family: var(--barlow); font-size: 0.72rem; font-weight: 800;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--terracotta); margin-bottom: 0.75rem;
+      animation: fadeUp 0.6s ease 0.1s both;
+    }
+    .hero-title {
+      font-family: var(--barlow);
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      font-weight: 900; line-height: 0.92;
+      color: var(--dark-green);
+      text-transform: uppercase; letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+      animation: fadeUp 0.6s ease 0.2s both;
+    }
+    .hero-title .accent { color: var(--light-green); }
+    .hero-sub {
+      font-family: var(--mulish); font-size: 1.05rem;
+      font-weight: 500; line-height: 1.65;
+      color: var(--mid-green); max-width: 48ch;
+      margin-bottom: 1.25rem;
+      animation: fadeUp 0.6s ease 0.3s both;
+    }
+    .hero-meta {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--barlow); font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--mid-green); margin-bottom: 1.75rem;
+      animation: fadeUp 0.6s ease 0.35s both;
+    }
+    .hero-meta::before {
+      content: ''; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--teal); flex-shrink: 0;
+    }
+    .hero-actions {
+      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeUp 0.6s ease 0.45s both;
+    }
+
+    /* ================================================================
+       BUTTONS
+       ================================================================ */
+    .btn-primary {
+      font-family: var(--barlow); font-size: 0.875rem; font-weight: 800;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      background: var(--dark-green); color: var(--white);
+      padding: 0.75rem 1.75rem; border-radius: 50px;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--mid-green); transform: translateY(-1px); }
+
+    .btn-ghost {
+      font-family: var(--barlow); font-size: 0.875rem; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      color: var(--dark-green); border: 2px solid rgba(28,69,50,0.28);
+      padding: 0.7rem 1.5rem; border-radius: 50px;
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--dark-green); color: var(--dark-green); }
+
+    .btn-terra {
+      font-family: var(--barlow); font-size: 0.875rem; font-weight: 800;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      background: var(--terracotta); color: var(--white);
+      padding: 0.875rem 2.25rem; border-radius: 50px;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-terra:hover { background: var(--terra-light); transform: translateY(-1px); }
+
+    /* ================================================================
+       SECTIONS
+       ================================================================ */
+    .section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1060px; margin: 0 auto; }
+
+    .section-label {
+      font-family: var(--barlow); font-size: 0.72rem; font-weight: 800;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--terracotta); margin-bottom: 0.5rem;
+    }
+    .section-heading {
+      font-family: var(--barlow); font-size: clamp(2rem, 4vw, 3.25rem);
+      font-weight: 900; line-height: 1.02; text-transform: uppercase;
+      color: var(--dark-green); margin-bottom: 1rem;
+    }
+    .section-heading .accent { color: var(--light-green); }
+    .section-body {
+      font-family: var(--mulish); font-size: 1.05rem;
+      font-weight: 400; line-height: 1.7; color: var(--mid-green);
+      max-width: 58ch; margin-bottom: 2.5rem;
+    }
+
+    /* ================================================================
+       CONCEPT — 3-column value cards
+       ================================================================ */
+    .concept-intro {
+      max-width: 680px; margin: 0 auto 3rem;
+      text-align: center;
+    }
+    .concept-intro .section-body { max-width: 100%; margin-bottom: 0; }
+
+    .concept-cards {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; margin-top: 0;
+    }
+    .concept-card {
+      background: var(--white);
+      border: 1px solid rgba(28,69,50,0.09);
+      border-radius: 1.25rem;
+      padding: 1.75rem 1.75rem 2rem;
+    }
+    .cc-icon {
+      width: 2.75rem; height: 2.75rem;
+      background: var(--cream); border-radius: 0.625rem;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--dark-green); margin-bottom: 1.25rem;
+    }
+    .cc-icon svg { width: 1.375rem; height: 1.375rem; }
+    .cc-title {
+      font-family: var(--barlow); font-size: 1.05rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.03em;
+      color: var(--dark-green); margin-bottom: 0.5rem;
+    }
+    .cc-body {
+      font-family: var(--mulish); font-size: 0.9375rem;
+      line-height: 1.65; color: var(--mid-green); font-weight: 400;
+    }
+
+    /* ================================================================
+       TOPICS
+       ================================================================ */
+    .topics-section {
+      background: var(--dark-green);
+      padding: 4.5rem 2rem;
+    }
+    .topics-inner {
+      max-width: 860px; margin: 0 auto; text-align: center;
+    }
+    .topics-label {
+      font-family: var(--barlow); font-size: 0.72rem; font-weight: 800;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(216,224,196,0.65); margin-bottom: 0.5rem;
+    }
+    .topics-heading {
+      font-family: var(--barlow); font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-weight: 900; text-transform: uppercase; line-height: 1.0;
+      color: white; margin-bottom: 0.75rem;
+    }
+    .topics-sub {
+      font-family: var(--mulish); font-size: 0.9375rem;
+      color: rgba(255,255,255,0.55); line-height: 1.6;
+      margin-bottom: 2.5rem;
+    }
+    .topics-cloud {
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 0.625rem;
+    }
+    .topic-pill {
+      font-family: var(--barlow); font-size: 0.82rem; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      border: 1.5px solid rgba(255,255,255,0.2);
+      padding: 0.5rem 1.125rem; border-radius: 50px;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      cursor: default;
+    }
+    .topic-pill:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.4);
+      color: white;
+    }
+    .topic-pill.accent {
+      background: rgba(196, 80, 58, 0.25);
+      border-color: rgba(196, 80, 58, 0.5);
+      color: #f0a090;
+    }
+    .topic-pill.accent:hover {
+      background: rgba(196, 80, 58, 0.38);
+      border-color: rgba(232, 117, 93, 0.7);
+      color: #f5b5a6;
+    }
+
+    /* ================================================================
+       METRICS STRIP
+       ================================================================ */
+    .metrics-strip {
+      background: var(--cream-light);
+      border-top: 1px solid rgba(28,69,50,0.07);
+      border-bottom: 1px solid rgba(28,69,50,0.07);
+      padding: 2.5rem 2rem;
+    }
+    .metrics-inner {
+      max-width: 720px; margin: 0 auto;
+      display: flex; align-items: center;
+      justify-content: center; gap: 0;
+    }
+    .metric {
+      flex: 1; text-align: center;
+      padding: 0 1.5rem;
+    }
+    .metric + .metric {
+      border-left: 1px solid rgba(28,69,50,0.12);
+    }
+    .metric-num {
+      font-family: var(--barlow); font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 900; color: var(--terracotta);
+      line-height: 1; margin-bottom: 0.3rem;
+    }
+    .metric-label {
+      font-family: var(--mulish); font-size: 0.8125rem;
+      color: var(--mid-green); line-height: 1.35; font-weight: 400;
+    }
+
+    /* ================================================================
+       TIERS
+       ================================================================ */
+    .tiers-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; margin-top: 2.5rem;
+    }
+    .tier-card {
+      background: var(--white);
+      border: 1px solid rgba(28,69,50,0.09);
+      border-radius: 1.25rem;
+      padding: 1.875rem;
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .tier-card.featured {
+      border-color: var(--dark-green);
+      box-shadow: 0 0 0 3px rgba(28,69,50,0.08);
+    }
+    .tier-icon-wrap {
+      width: 2.75rem; height: 2.75rem;
+      background: var(--cream); border-radius: 0.625rem;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--dark-green);
+    }
+    .tier-icon-wrap svg { width: 1.375rem; height: 1.375rem; }
+    .tier-name {
+      font-family: var(--barlow); font-size: 0.72rem; font-weight: 800;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--terracotta);
+    }
+    .tier-price-block { line-height: 1; }
+    .tier-price {
+      font-family: var(--barlow); font-size: 2rem; font-weight: 900;
+      color: var(--dark-green); display: block;
+    }
+    .tier-per {
+      font-family: var(--mulish); font-size: 0.8125rem;
+      color: rgba(28,69,50,0.5); margin-top: 0.2rem;
+    }
+    .tier-divider {
+      border: none; border-top: 1px solid rgba(28,69,50,0.09);
+    }
+    .tier-desc {
+      font-family: var(--mulish); font-size: 0.9375rem;
+      line-height: 1.6; color: var(--mid-green); flex: 1;
+    }
+    .tier-features-simple {
+      list-style: none; display: flex;
+      flex-direction: column; gap: 0.5rem;
+    }
+    .tier-feat {
+      font-family: var(--mulish); font-size: 0.875rem;
+      color: var(--dark-green); display: flex;
+      gap: 0.625rem; align-items: flex-start;
+    }
+    .tier-feat::before {
+      content: ''; width: 6px; height: 6px;
+      border-radius: 50%; background: var(--terracotta);
+      flex-shrink: 0; margin-top: 0.45em;
+    }
+    .tier-avail {
+      font-family: var(--barlow); font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(28,69,50,0.4); margin-top: auto;
+    }
+
+    .inkind-row {
+      margin-top: 1.25rem;
+      background: var(--cream-light);
+      border: 1px solid rgba(28,69,50,0.09);
+      border-radius: 1.125rem;
+      padding: 1.5rem 1.875rem;
+      display: flex; align-items: center;
+      gap: 1.5rem; flex-wrap: wrap;
+    }
+    .inkind-icon {
+      width: 2.75rem; height: 2.75rem; flex-shrink: 0;
+      background: var(--cream-dark); border-radius: 0.625rem;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--dark-green);
+    }
+    .inkind-icon svg { width: 1.375rem; height: 1.375rem; }
+    .inkind-text { flex: 1; min-width: 200px; }
+    .inkind-title {
+      font-family: var(--barlow); font-size: 0.8rem; font-weight: 800;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--dark-green); margin-bottom: 0.25rem;
+    }
+    .inkind-desc {
+      font-family: var(--mulish); font-size: 0.875rem;
+      color: var(--mid-green); line-height: 1.5;
+    }
+    .tiers-note {
+      text-align: center; margin-top: 1.5rem;
+      font-family: var(--mulish); font-size: 0.8125rem;
+      color: rgba(28,69,50,0.45); font-style: italic;
+    }
+
+    /* ================================================================
+       CTA SECTION
+       ================================================================ */
+    .cta-section {
+      background: var(--dark-green);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    .cta-inner { max-width: 560px; margin: 0 auto; }
+    .cta-label {
+      font-family: var(--barlow); font-size: 0.72rem; font-weight: 800;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(216,224,196,0.6); margin-bottom: 0.5rem;
+    }
+    .cta-heading {
+      font-family: var(--barlow); font-size: clamp(2rem, 4vw, 3.25rem);
+      font-weight: 900; text-transform: uppercase; line-height: 1.0;
+      color: white; margin-bottom: 0.875rem;
+    }
+    .cta-body {
+      font-family: var(--mulish); font-size: 1rem;
+      color: rgba(255,255,255,0.6); line-height: 1.65;
+      margin-bottom: 2rem;
+    }
+    .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ================================================================
+       FOOTER
+       ================================================================ */
+    .footer {
+      background: var(--dark-green);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 2rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1060px; margin: 0 auto;
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-logo { display: flex; align-items: center; gap: 0.75rem; }
+    .footer-logo img { width: 1.75rem; height: 1.75rem; object-fit: contain; opacity: 0.7; }
+    .footer-brand {
+      font-family: var(--barlow); font-size: 0.8rem; font-weight: 700;
+      color: rgba(255,255,255,0.6);
+    }
+    .footer-copy {
+      font-family: var(--mulish); font-size: 0.75rem;
+      color: rgba(255,255,255,0.25);
+    }
+    .footer-link {
+      font-family: var(--mulish); font-size: 0.775rem;
+      color: rgba(255,255,255,0.4);
+      transition: color 0.2s;
+    }
+    .footer-link:hover { color: rgba(255,255,255,0.85); }
+
+    /* ================================================================
+       SCROLL REVEAL
+       ================================================================ */
+    .reveal {
+      opacity: 0; transform: translateY(1.25rem);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.2s; }
+    .d3 { transition-delay: 0.3s; }
+    .d4 { transition-delay: 0.4s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(1.25rem); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ================================================================
+       RESPONSIVE
+       ================================================================ */
+    @media (max-width: 900px) {
+      .concept-cards { grid-template-columns: 1fr; gap: 1rem; }
+      .tiers-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .tier-card.featured { order: -1; }
+      .metrics-inner { gap: 0; }
+    }
+    @media (max-width: 700px) {
+      .nav { gap: 1rem; padding: 0.4rem 0.5rem 0.4rem 1rem; }
+      .nav-back { display: none; }
+      .section { padding: 3.5rem 1.25rem; }
+      .topics-section { padding: 3.5rem 1.25rem; }
+      .metrics-strip { padding: 2rem 1.25rem; }
+      .cta-section { padding: 3.5rem 1.25rem; }
+      .inkind-row { gap: 1rem; }
+      .concept-cards { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+    }
+    @media (max-width: 480px) {
+      .metrics-inner { flex-direction: column; gap: 1.5rem; }
+      .metric + .metric { border-left: none; border-top: 1px solid rgba(28,69,50,0.12); padding-top: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ─────────────────────────────────────────────────────── -->
+  <nav class="nav" id="main-nav">
+    <div class="nav-logo">
+      <img src="assets/ru-logo-circle.png" alt="Regens Unite">
+      <div class="nav-logo-text">Common Ground Mumbai</div>
+    </div>
+    <a href="index.html" class="nav-back">← Main site</a>
+    <a href="mailto:cori@regensunite.earth" class="nav-cta">Get in touch</a>
+  </nav>
+
+
+  <!-- ── HERO ─────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Regens Unite · Mumbai 2026</div>
+      <h1 class="hero-title">
+        Common Ground<br><span class="accent">Mumbai</span>
+      </h1>
+      <p class="hero-sub">
+        A collaborative pop-up hub for the global Ethereum ecosystem —
+        co-funded, co-programmed, and rooted in Mumbai during
+        India's biggest blockchain moment.
+      </p>
+      <div class="hero-meta">
+        Mumbai · India Blockchain Week · November 2026 · 12,000+ in the city
+      </div>
+      <div class="hero-actions">
+        <a href="#tiers" class="btn-primary">See partnership options ↓</a>
+        <a href="mailto:cori@regensunite.earth" class="btn-ghost">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── CONCEPT ──────────────────────────────────────────────────── -->
+  <section class="section" id="concept" style="background: var(--cream);">
+    <div class="section-inner">
+
+      <div class="concept-intro">
+        <p class="section-label reveal">The Concept</p>
+        <h2 class="section-heading reveal d1">
+          One space.<br><span class="accent">Many communities.</span>
+        </h2>
+        <p class="section-body reveal d2">
+          Common Ground is a shared pop-up space co-created by multiple
+          organisations from the Ethereum and Web3 ecosystem. We pool
+          resources to secure a locally-owned venue in Mumbai for a full
+          week — a base for co-working, programming, and community
+          gathering during India Blockchain Week.
+          <br><br>
+          No hotel conference rooms. No scattered side events.
+          One rooted space, shared by people who care about the same things.
+        </p>
+      </div>
+
+      <div class="concept-cards">
+
+        <!-- Card 1 -->
+        <div class="concept-card reveal d1">
+          <div class="cc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <div class="cc-title">Co-fund a local space</div>
+          <p class="cc-body">
+            Pool venue, production, and operational costs with other aligned
+            organisations. A better location at a fraction of what any single
+            partner would pay alone — while keeping it locally owned and
+            values-aligned.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="concept-card reveal d2">
+          <div class="cc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+              <line x1="7" y1="9" x2="17" y2="9"/>
+              <line x1="7" y1="13" x2="13" y2="13"/>
+            </svg>
+          </div>
+          <div class="cc-title">Programme your day</div>
+          <p class="cc-body">
+            Take over a full day — or a session block — with your speakers,
+            your agenda, your community. Full creative control inside a
+            shared infrastructure. You bring the vision; we handle the space.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="concept-card reveal d3">
+          <div class="cc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div class="cc-title">Connect across the ecosystem</div>
+          <p class="cc-body">
+            One hub brings together key organisations from DeFi, ReFi,
+            public goods, climate, governance, AI, and more. Share the
+            week, share the audience, and build relationships that last
+            beyond the conference.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── TOPICS ───────────────────────────────────────────────────── -->
+  <section class="topics-section" id="topics">
+    <div class="topics-inner">
+      <p class="topics-label reveal">What we'll explore</p>
+      <h2 class="topics-heading reveal d1">Topics at Common Ground</h2>
+      <p class="topics-sub reveal d2">
+        Each partner brings their focus area to the shared space.
+        Here's the range of topics the week will span.
+      </p>
+      <div class="topics-cloud reveal d3">
+        <span class="topic-pill accent">Artificial Intelligence</span>
+        <span class="topic-pill accent">Digital Public Infrastructure</span>
+        <span class="topic-pill">Regenerative Finance</span>
+        <span class="topic-pill">Climate &amp; Sustainability</span>
+        <span class="topic-pill">Public Goods Funding</span>
+        <span class="topic-pill">DAO Governance</span>
+        <span class="topic-pill">Open Source</span>
+        <span class="topic-pill">Web3 Communities</span>
+        <span class="topic-pill">Social Impact</span>
+        <span class="topic-pill">Blockchain &amp; Crypto</span>
+        <span class="topic-pill">Developer Tools</span>
+        <span class="topic-pill">Ethereum Ecosystem</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── METRICS STRIP ────────────────────────────────────────────── -->
+  <div class="metrics-strip">
+    <div class="metrics-inner">
+      <div class="metric reveal">
+        <div class="metric-num">25+</div>
+        <div class="metric-label">events produced<br>across Devcon seasons</div>
+      </div>
+      <div class="metric reveal d1">
+        <div class="metric-num">600+</div>
+        <div class="metric-label">attendees across<br>all editions</div>
+      </div>
+      <div class="metric reveal d2">
+        <div class="metric-num">$25k</div>
+        <div class="metric-label">raised &amp; deployed<br>to public goods</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ── PARTNERSHIP TIERS ─────────────────────────────────────────── -->
+  <section class="section" id="tiers" style="background: var(--cream);">
+    <div class="section-inner">
+      <p class="section-label reveal">Get involved</p>
+      <h2 class="section-heading reveal d1">
+        Pick your level<br><span class="accent">of involvement.</span>
+      </h2>
+
+      <div class="tiers-grid">
+
+        <!-- Day Partner -->
+        <div class="tier-card featured reveal d1">
+          <div class="tier-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="17" rx="2"/>
+              <line x1="3" y1="9" x2="21" y2="9"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <path d="M8 14l2.5 2.5L16 11"/>
+            </svg>
+          </div>
+          <div class="tier-name">Day Partner</div>
+          <div class="tier-price-block">
+            <span class="tier-price">$15,000</span>
+            <div class="tier-per">per day slot</div>
+          </div>
+          <hr class="tier-divider">
+          <p class="tier-desc">
+            Own a full day at the hub — your speakers, your agenda, your
+            community. Full creative control and co-branding across the
+            entire week.
+          </p>
+          <ul class="tier-features-simple">
+            <li class="tier-feat">Full day of programming (your format)</li>
+            <li class="tier-feat">Co-branding all week on-site &amp; online</li>
+            <li class="tier-feat">Featured in all press &amp; outreach</li>
+            <li class="tier-feat">Logo on all venue signage</li>
+          </ul>
+          <div class="tier-avail">5 slots available</div>
+        </div>
+
+        <!-- Programme Partner -->
+        <div class="tier-card reveal d2">
+          <div class="tier-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div class="tier-name">Programme Partner</div>
+          <div class="tier-price-block">
+            <span class="tier-price">$8,000</span>
+            <div class="tier-per">per session block</div>
+          </div>
+          <hr class="tier-divider">
+          <p class="tier-desc">
+            Host a half-day track or major evening session. Named slot in the
+            public programme with co-branding on all session materials.
+          </p>
+          <ul class="tier-features-simple">
+            <li class="tier-feat">Half-day track or evening session</li>
+            <li class="tier-feat">Named in the public programme</li>
+            <li class="tier-feat">Co-branding on session materials</li>
+            <li class="tier-feat">Logo presence on-site &amp; online</li>
+          </ul>
+          <div class="tier-avail">Limited availability</div>
+        </div>
+
+        <!-- Community Partner -->
+        <div class="tier-card reveal d3">
+          <div class="tier-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+              <line x1="7" y1="7" x2="7.01" y2="7"/>
+            </svg>
+          </div>
+          <div class="tier-name">Community Partner</div>
+          <div class="tier-price-block">
+            <span class="tier-price">$4,000</span>
+            <div class="tier-per">week-long presence</div>
+          </div>
+          <hr class="tier-divider">
+          <p class="tier-desc">
+            A branded presence at the hub for the full week — one activation
+            slot, logo across all materials, and access to the whole
+            community.
+          </p>
+          <ul class="tier-features-simple">
+            <li class="tier-feat">Branded presence all week</li>
+            <li class="tier-feat">One session or activation slot</li>
+            <li class="tier-feat">Logo across all materials</li>
+          </ul>
+          <div class="tier-avail">Open</div>
+        </div>
+
+      </div>
+
+      <!-- In-Kind -->
+      <div class="inkind-row reveal d4">
+        <div class="inkind-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="17 1 21 5 17 9"/>
+            <path d="M3 11V9a4 4 0 0 1 4-4h14"/>
+            <polyline points="7 23 3 19 7 15"/>
+            <path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+          </svg>
+        </div>
+        <div class="inkind-text">
+          <div class="inkind-title">In-Kind Partnership</div>
+          <div class="inkind-desc">
+            Venue access, production, accommodation, or services in lieu of cash.
+            Visibility equivalent to the matching cash tier.
+          </div>
+        </div>
+        <a href="mailto:cori@regensunite.earth" class="btn-ghost" style="flex-shrink:0; white-space:nowrap;">Let's talk →</a>
+      </div>
+
+      <p class="tiers-note reveal">
+        These are initial price points — the right fit matters more than the tier.
+        Let's start a conversation.
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- ── CTA ──────────────────────────────────────────────────────── -->
+  <section class="cta-section" id="contact">
+    <div class="cta-inner">
+      <p class="cta-label reveal">Ready to explore?</p>
+      <h2 class="cta-heading reveal d1">
+        Let's talk about<br>your involvement.
+      </h2>
+      <p class="cta-body reveal d2">
+        We're in the early stages — this is the right moment to shape what
+        Common Ground Mumbai becomes. Drop us a line and let's find the
+        right fit together.
+      </p>
+      <div class="cta-actions reveal d3">
+        <a href="mailto:cori@regensunite.earth" class="btn-terra">Get in touch →</a>
+        <a href="index.html" class="btn-ghost" style="border-color: rgba(255,255,255,0.25); color: rgba(255,255,255,0.7);">See full concept</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── FOOTER ───────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="assets/ru-logo-circle.png" alt="Regens Unite">
+        <span class="footer-brand">Regens Unite</span>
+      </div>
+      <span class="footer-copy">Common Ground Mumbai 2026 · By Regens Unite</span>
+      <a href="index.html" class="footer-link">← Main site</a>
+    </div>
+  </footer>
+
+
+  <script>
+    // Nav scroll effect
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => revealObserver.observe(el));
+  </script>
+
+</body>
+</html>
