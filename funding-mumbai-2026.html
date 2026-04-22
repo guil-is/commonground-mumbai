@@ -254,7 +254,9 @@
 
     /* ── METRICS STRIP ──────────────────────────────────────────── */
     .metrics-strip {
-      background: var(--dark-green); padding: 3.5rem 2rem; position: relative;
+      background: var(--cream); padding: 3rem 2rem; position: relative;
+      border-top: 1px solid rgba(28,69,50,0.08);
+      border-bottom: 1px solid rgba(28,69,50,0.08);
     }
     .metrics-inner {
       max-width: 900px; margin: 0 auto; display: flex;
@@ -265,15 +267,15 @@
     .metric + .metric::before {
       content: ''; position: absolute; left: 0; top: 50%;
       transform: translateY(-50%); height: 2.5rem; width: 1px;
-      background: rgba(255,255,255,0.12);
+      background: rgba(28,69,50,0.1);
     }
     .metric-num {
       font-family: var(--barlow); font-size: clamp(2.25rem, 4.5vw, 3rem);
-      font-weight: 900; color: var(--sage-light); line-height: 1; margin-bottom: 0.375rem;
+      font-weight: 900; color: var(--terracotta); line-height: 1; margin-bottom: 0.375rem;
     }
     .metric-label {
       font-family: var(--mulish); font-size: 0.825rem;
-      color: rgba(255,255,255,0.5); line-height: 1.5;
+      color: rgba(28,69,50,0.45); line-height: 1.5;
     }
 
     /* ── BUDGET ──────────────────────────────────────────────────── */
@@ -300,58 +302,82 @@
     .budget-table tfoot .budget-amount { font-size: 1.05rem; color: white; }
     .budget-note { font-family: var(--mulish); font-size: 0.8rem; color: rgba(255,255,255,0.35); line-height: 1.65; margin-top: 1.25rem; font-style: italic; }
 
-    /* ── VENUES SLIDER ───────────────────────────────────────────── */
-    .venues-scroll {
-      overflow-x: auto; display: flex; gap: 1.125rem;
-      padding: 2rem 0 1rem; margin-top: 2.5rem;
-      scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
-      scrollbar-width: none; cursor: grab;
-    }
-    .venues-scroll::-webkit-scrollbar { display: none; }
-    .venues-scroll:active { cursor: grabbing; }
-    .venue-card {
-      flex-shrink: 0; width: 300px; scroll-snap-align: start;
-      background: white; border-radius: 1.25rem;
-      padding: 1.625rem 1.5rem 1.75rem;
+    /* ── VENUE SLIDER ───────────────────────────────────────────── */
+    .venue-slider { position: relative; margin-top: 2.5rem; }
+    .venue-slides-wrap {
+      overflow: hidden; border-radius: 1.25rem;
       border: 1px solid rgba(28,69,50,0.09);
-      box-shadow: 0 2px 12px rgba(28,69,50,0.06);
-      display: flex; flex-direction: column; gap: 1rem; position: relative;
+      box-shadow: 0 2px 16px rgba(28,69,50,0.08);
     }
-    .venue-pick {
-      position: absolute; top: -0.7rem; left: 1.5rem;
+    .venue-slides { display: flex; transition: transform 0.45s cubic-bezier(0.4,0,0.2,1); }
+    .venue-slide { flex-shrink: 0; width: 100%; background: white; }
+    .venue-photo {
+      width: 100%; height: 268px; overflow: hidden; position: relative;
+      background: var(--dark-green);
+    }
+    .venue-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .venue-photo-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--dark-green) 0%, #2d6a4f 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .venue-photo-bg svg { width: 72px; height: 72px; color: rgba(255,255,255,0.1); }
+    .venue-pick-overlay {
+      position: absolute; top: 1rem; left: 1.25rem;
       background: var(--terracotta); color: white;
       font-family: var(--barlow); font-size: 0.57rem; font-weight: 900;
       letter-spacing: 0.13em; text-transform: uppercase;
-      padding: 0.2rem 0.8rem; border-radius: 50px;
+      padding: 0.22rem 0.875rem; border-radius: 50px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.22);
     }
-    .venue-name {
-      font-family: var(--barlow); font-size: 1.05rem; font-weight: 800;
-      color: var(--dark-green); line-height: 1.2;
+    .venue-slide-body { padding: 1.625rem 2rem 1.75rem; }
+    .venue-slide-name {
+      font-family: var(--barlow); font-size: 1.25rem; font-weight: 800;
+      color: var(--dark-green); line-height: 1.15; margin-bottom: 0.625rem;
     }
-    .venue-meta {
-      display: flex; gap: 0.5rem; flex-wrap: wrap;
-    }
+    .venue-slide-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.125rem; }
     .venue-tag {
       font-family: var(--barlow); font-size: 0.62rem; font-weight: 700;
       letter-spacing: 0.08em; text-transform: uppercase;
       background: rgba(28,69,50,0.06); color: var(--mid-green);
       padding: 0.22rem 0.7rem; border-radius: 50px;
     }
-    .venue-rule { height: 1px; background: rgba(28,69,50,0.07); }
-    .venue-pros, .venue-cons { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+    .venue-slide-rule { height: 1px; background: rgba(28,69,50,0.07); margin-bottom: 1.25rem; }
+    .venue-procon {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 2.5rem;
+    }
     .venue-pro, .venue-con {
-      font-family: var(--mulish); font-size: 0.825rem; line-height: 1.38;
+      font-family: var(--mulish); font-size: 0.85rem; line-height: 1.4;
       padding-left: 1.25rem; position: relative;
     }
     .venue-pro { color: var(--mid-green); }
     .venue-pro::before { content: '✓'; position: absolute; left: 0; color: #2b7a5c; font-weight: 700; font-size: 0.75rem; }
-    .venue-con { color: rgba(28,69,50,0.5); }
+    .venue-con { color: rgba(28,69,50,0.48); }
     .venue-con::before { content: '–'; position: absolute; left: 0; color: var(--terracotta); font-weight: 700; }
-    .venue-scroll-hint {
-      font-family: var(--barlow); font-size: 0.68rem; font-weight: 700;
-      letter-spacing: 0.08em; color: rgba(28,69,50,0.35);
-      margin-top: 0.5rem; display: flex; align-items: center; gap: 0.4rem;
+    /* Arrow buttons */
+    .vslide-btn {
+      position: absolute; top: 134px; transform: translateY(-50%);
+      width: 42px; height: 42px; border-radius: 50%;
+      background: white; border: none;
+      box-shadow: 0 2px 16px rgba(28,69,50,0.22);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 10; color: var(--dark-green);
+      transition: box-shadow 0.2s, transform 0.15s;
     }
+    .vslide-btn:hover { box-shadow: 0 4px 22px rgba(28,69,50,0.3); transform: translateY(calc(-50% - 1px)); }
+    .vslide-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .vslide-prev { left: -21px; }
+    .vslide-next { right: -21px; }
+    /* Dots */
+    .vslide-dots {
+      display: flex; justify-content: center; gap: 0.5rem; padding: 0.875rem 0 0;
+    }
+    .vdot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: rgba(28,69,50,0.2); border: none; cursor: pointer; padding: 0;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .vdot.active { background: var(--dark-green); transform: scale(1.3); }
 
     /* ── CTA ─────────────────────────────────────────────────────── */
     .cta-section {
@@ -423,9 +449,13 @@
       .budget-table tbody td,
       .budget-table tfoot td { padding: 0.75rem 1rem; }
       .cta-section { padding: 4rem 1.25rem; }
-      .metrics-strip { padding: 2.75rem 1.25rem; }
+      .metrics-strip { padding: 2.5rem 1.25rem; }
       .metrics-inner { flex-direction: column; gap: 1.75rem; }
       .metric + .metric::before { display: none; }
+      .venue-slide-body { padding: 1.25rem 1.25rem 1.5rem; }
+      .venue-procon { grid-template-columns: 1fr; gap: 0.45rem; }
+      .vslide-prev { left: 0.5rem; }
+      .vslide-next { right: 0.5rem; }
     }
   </style>
 </head>
@@ -471,7 +501,7 @@
 
 
   <!-- ── THE CONCEPT ───────────────────────────────────────────── -->
-  <section class="section wave-to-dg" style="background: var(--cream);">
+  <section class="section" style="background: var(--cream);">
     <div class="section-inner">
       <div class="concept-grid">
 
@@ -505,7 +535,7 @@
 
 
   <!-- ── METRICS STRIP ────────────────────────────────────────── -->
-  <div class="metrics-strip wave-to-cream">
+  <div class="metrics-strip">
     <div class="metrics-inner">
       <div class="metric reveal">
         <div class="metric-num">25+</div>
@@ -555,7 +585,7 @@
         <!-- Programme Partner -->
         <div class="tier-card reveal d2">
           <div class="tier-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="9" y1="22" x2="15" y2="22"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><line x1="7" y1="9" x2="17" y2="9"/><line x1="7" y1="13" x2="13" y2="13"/></svg>
           </div>
           <div class="tier-label">Programme Partner</div>
           <div>
@@ -594,6 +624,9 @@
       </div>
 
       <div class="inkind reveal">
+        <div class="tier-icon" style="flex-shrink:0;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+        </div>
         <div>
           <div class="inkind-title">In-Kind Partnership</div>
           <div class="inkind-desc">Venue, production, accommodation or services in lieu of cash — visibility equivalent to the matching cash tier.</div>
@@ -672,112 +705,174 @@
       <h2 class="section-heading reveal d1">Where we're<br><span class="accent">looking.</span></h2>
       <p class="section-body reveal d2">No hotel ballrooms. These are our current top picks — locally-owned, character-rich spaces scouted for values fit and capacity. Nothing locked in yet.</p>
 
-      <div class="venues-scroll reveal d2" id="venues-scroll">
+      <div class="venue-slider reveal d2" id="venue-slider">
+        <div class="venue-slides-wrap">
+          <div class="venue-slides" id="venue-slides">
 
-        <!-- G5A Foundation — TOP PICK -->
-        <div class="venue-card">
-          <div class="venue-pick">★ Top Pick</div>
-          <div class="venue-name">G5A Foundation</div>
-          <div class="venue-meta">
-            <span class="venue-tag">Worli</span>
-            <span class="venue-tag">~165 pax</span>
-            <span class="venue-tag">Non-profit</span>
-          </div>
-          <div class="venue-rule"></div>
-          <ul class="venue-pros">
-            <li class="venue-pro">Repurposed textile mill — strong cultural identity</li>
-            <li class="venue-pro">Values-aligned non-profit organisation</li>
-            <li class="venue-pro">Flexible with non-commercial bookings</li>
-            <li class="venue-pro">Multiple indoor + courtyard spaces</li>
-          </ul>
-          <ul class="venue-cons">
-            <li class="venue-con">Capacity cap ~165 pax</li>
-            <li class="venue-con">No published rates — needs direct negotiation</li>
-          </ul>
+            <!-- Slide 1: G5A Foundation — TOP PICK -->
+            <div class="venue-slide">
+              <div class="venue-photo">
+                <img src="https://img-cdn.publive.online/fit-in/1280x960/filters:format(webp)/english-betterindia/media/post_attachments/uploads/2025/05/g5a-warehouse-3-1747926877.jpg"
+                     alt="G5A Foundation, Worli Mumbai"
+                     onerror="this.style.display='none'">
+                <div class="venue-photo-bg">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
+                <div class="venue-pick-overlay">★ Top Pick</div>
+              </div>
+              <div class="venue-slide-body">
+                <div class="venue-slide-name">G5A Foundation</div>
+                <div class="venue-slide-meta">
+                  <span class="venue-tag">Worli / Mahalaxmi</span>
+                  <span class="venue-tag">~165 pax</span>
+                  <span class="venue-tag">Non-profit</span>
+                </div>
+                <div class="venue-slide-rule"></div>
+                <div class="venue-procon">
+                  <p class="venue-pro">Repurposed textile mill — strong cultural identity</p>
+                  <p class="venue-con">Capacity cap ~165 pax</p>
+                  <p class="venue-pro">Values-aligned non-profit org</p>
+                  <p class="venue-con">No published rates — direct negotiation needed</p>
+                  <p class="venue-pro">Flexible with non-commercial bookings</p>
+                  <p class="venue-con">&nbsp;</p>
+                  <p class="venue-pro">Multiple indoor + courtyard spaces</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 2: CIRQA Bombay -->
+            <div class="venue-slide">
+              <div class="venue-photo">
+                <img src="https://societyinteriorsdesign.com/wp-content/uploads/2023/10/CIRQA-Interiors-1024x683.jpg"
+                     alt="CIRQA Bombay interior"
+                     onerror="this.style.display='none'">
+                <div class="venue-photo-bg">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
+              </div>
+              <div class="venue-slide-body">
+                <div class="venue-slide-name">CIRQA Bombay</div>
+                <div class="venue-slide-meta">
+                  <span class="venue-tag">Lower Parel</span>
+                  <span class="venue-tag">~200 pax</span>
+                  <span class="venue-tag">Full buyout</span>
+                </div>
+                <div class="venue-slide-rule"></div>
+                <div class="venue-procon">
+                  <p class="venue-pro">Up to 200 pax, flexible full buyout</p>
+                  <p class="venue-con">Less distinct cultural character</p>
+                  <p class="venue-pro">In-house AV and production support</p>
+                  <p class="venue-con">Likely Devcon-premium pricing</p>
+                  <p class="venue-pro">Private entrance + washrooms for events</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 3: antiSOCIAL -->
+            <div class="venue-slide">
+              <div class="venue-photo">
+                <img src="https://imgmedia.lbb.in/media/2022/08/62fb2d3693483b5d44097ba0_1660628278751.jpg"
+                     alt="antiSOCIAL Mumbai venue"
+                     onerror="this.style.display='none'">
+                <div class="venue-photo-bg">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
+              </div>
+              <div class="venue-slide-body">
+                <div class="venue-slide-name">antiSOCIAL</div>
+                <div class="venue-slide-meta">
+                  <span class="venue-tag">Mathuradas Mill</span>
+                  <span class="venue-tag">~500 pax</span>
+                  <span class="venue-tag">Live music</span>
+                </div>
+                <div class="venue-slide-rule"></div>
+                <div class="venue-procon">
+                  <p class="venue-pro">Adamson AV — best sound in the city</p>
+                  <p class="venue-con">Nightclub vibe, awkward for daytime</p>
+                  <p class="venue-pro">Iconic Mumbai brand, large capacity</p>
+                  <p class="venue-con">Higher evening buyout rates</p>
+                  <p class="venue-pro">Strong for evening programming</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 4: Royal Opera House -->
+            <div class="venue-slide">
+              <div class="venue-photo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Opera_House%2C_Mumbai.JPG/1200px-Opera_House%2C_Mumbai.JPG"
+                     alt="Royal Opera House, Mumbai"
+                     onerror="this.style.display='none'">
+                <div class="venue-photo-bg">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
+              </div>
+              <div class="venue-slide-body">
+                <div class="venue-slide-name">Royal Opera House</div>
+                <div class="venue-slide-meta">
+                  <span class="venue-tag">Charni Road</span>
+                  <span class="venue-tag">~800 pax</span>
+                  <span class="venue-tag">Heritage</span>
+                </div>
+                <div class="venue-slide-rule"></div>
+                <div class="venue-procon">
+                  <p class="venue-pro">UNESCO heritage building — visually iconic</p>
+                  <p class="venue-con">Rigid theatre seating, poor for workshops</p>
+                  <p class="venue-pro">800 pax, strong for a keynote day</p>
+                  <p class="venue-con">Too large and expensive for full week</p>
+                  <p class="venue-pro">High-profile, prestigious address</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 5: Method Gallery -->
+            <div class="venue-slide">
+              <div class="venue-photo">
+                <img src="https://themethod.art/cdn/shop/files/Sehaj_Malik_Points_of_Contact_Install_3_Method_Art.jpg"
+                     alt="Method Gallery, Kala Ghoda"
+                     onerror="this.style.display='none'">
+                <div class="venue-photo-bg">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
+              </div>
+              <div class="venue-slide-body">
+                <div class="venue-slide-name">Method Gallery</div>
+                <div class="venue-slide-meta">
+                  <span class="venue-tag">Kala Ghoda</span>
+                  <span class="venue-tag">80–100 pax</span>
+                  <span class="venue-tag">Art gallery</span>
+                </div>
+                <div class="venue-slide-rule"></div>
+                <div class="venue-procon">
+                  <p class="venue-pro">Strong creative identity, arts district</p>
+                  <p class="venue-con">Too small as main venue</p>
+                  <p class="venue-pro">Intimate, community-feel atmosphere</p>
+                  <p class="venue-con">Limited production infrastructure</p>
+                  <p class="venue-pro">Ideal satellite or side-event space</p>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /venue-slides -->
+        </div><!-- /venue-slides-wrap -->
+
+        <!-- Arrow buttons -->
+        <button class="vslide-btn vslide-prev" onclick="slideVenue(-1)" aria-label="Previous venue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="vslide-btn vslide-next" onclick="slideVenue(1)" aria-label="Next venue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+
+        <!-- Dots -->
+        <div class="vslide-dots" id="vslide-dots">
+          <button class="vdot active" onclick="goToVenue(0)" aria-label="Venue 1"></button>
+          <button class="vdot" onclick="goToVenue(1)" aria-label="Venue 2"></button>
+          <button class="vdot" onclick="goToVenue(2)" aria-label="Venue 3"></button>
+          <button class="vdot" onclick="goToVenue(3)" aria-label="Venue 4"></button>
+          <button class="vdot" onclick="goToVenue(4)" aria-label="Venue 5"></button>
         </div>
 
-        <!-- CIRQA Bombay -->
-        <div class="venue-card">
-          <div class="venue-name">CIRQA Bombay</div>
-          <div class="venue-meta">
-            <span class="venue-tag">Lower Parel</span>
-            <span class="venue-tag">~200 pax</span>
-            <span class="venue-tag">Event buyout</span>
-          </div>
-          <div class="venue-rule"></div>
-          <ul class="venue-pros">
-            <li class="venue-pro">Up to 200 pax, flexible full-buyout</li>
-            <li class="venue-pro">In-house AV and production support</li>
-            <li class="venue-pro">Well-established event venue</li>
-          </ul>
-          <ul class="venue-cons">
-            <li class="venue-con">Less distinct cultural character</li>
-            <li class="venue-con">Likely Devcon-premium pricing</li>
-          </ul>
-        </div>
-
-        <!-- antiSOCIAL -->
-        <div class="venue-card">
-          <div class="venue-name">antiSOCIAL</div>
-          <div class="venue-meta">
-            <span class="venue-tag">Mathuradas Mill</span>
-            <span class="venue-tag">~500 pax</span>
-            <span class="venue-tag">Live music</span>
-          </div>
-          <div class="venue-rule"></div>
-          <ul class="venue-pros">
-            <li class="venue-pro">Adamson AV system — best sound in the city</li>
-            <li class="venue-pro">Iconic Mumbai venue, strong brand</li>
-            <li class="venue-pro">Great for evening programming</li>
-          </ul>
-          <ul class="venue-cons">
-            <li class="venue-con">Nightclub vibe — awkward for daytime sessions</li>
-            <li class="venue-con">Higher evening buyout rates</li>
-          </ul>
-        </div>
-
-        <!-- Royal Opera House -->
-        <div class="venue-card">
-          <div class="venue-name">Royal Opera House</div>
-          <div class="venue-meta">
-            <span class="venue-tag">Charni Road</span>
-            <span class="venue-tag">~800 pax</span>
-            <span class="venue-tag">Heritage</span>
-          </div>
-          <div class="venue-rule"></div>
-          <ul class="venue-pros">
-            <li class="venue-pro">UNESCO heritage building — visually iconic</li>
-            <li class="venue-pro">800 pax — strong for a keynote day</li>
-            <li class="venue-pro">High-profile location</li>
-          </ul>
-          <ul class="venue-cons">
-            <li class="venue-con">Rigid theatre seating — poor for workshops</li>
-            <li class="venue-con">Too large and expensive for full-week format</li>
-          </ul>
-        </div>
-
-        <!-- Method Gallery -->
-        <div class="venue-card">
-          <div class="venue-name">Method Gallery</div>
-          <div class="venue-meta">
-            <span class="venue-tag">Kala Ghoda</span>
-            <span class="venue-tag">80–100 pax</span>
-            <span class="venue-tag">Art gallery</span>
-          </div>
-          <div class="venue-rule"></div>
-          <ul class="venue-pros">
-            <li class="venue-pro">Strong creative identity, arts district</li>
-            <li class="venue-pro">Intimate, community-feel atmosphere</li>
-            <li class="venue-pro">Good as satellite or side-event space</li>
-          </ul>
-          <ul class="venue-cons">
-            <li class="venue-con">Too small for main venue</li>
-            <li class="venue-con">Limited production infrastructure</li>
-          </ul>
-        </div>
-
-      </div>
-      <p class="venue-scroll-hint">← Drag to explore →</p>
+      </div><!-- /venue-slider -->
     </div>
   </section>
 
@@ -830,20 +925,27 @@
     }
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox({ target: document.getElementById('lightbox') }); });
 
-    // Venue slider — drag to scroll
-    const slider = document.getElementById('venues-scroll');
-    if (slider) {
-      let isDown = false, startX, scrollLeft;
-      slider.addEventListener('mousedown', e => {
-        isDown = true; startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft;
-      });
-      ['mouseleave','mouseup'].forEach(ev => slider.addEventListener(ev, () => { isDown = false; }));
-      slider.addEventListener('mousemove', e => {
-        if (!isDown) return;
-        e.preventDefault();
-        slider.scrollLeft = scrollLeft - (e.pageX - slider.offsetLeft - startX) * 1.2;
-      });
+    // Venue slider
+    let venueIdx = 0;
+    const venueTotal = 5;
+    function slideVenue(dir) { venueIdx = (venueIdx + dir + venueTotal) % venueTotal; updateVenue(); }
+    function goToVenue(idx) { venueIdx = idx; updateVenue(); }
+    function updateVenue() {
+      const slides = document.getElementById('venue-slides');
+      if (slides) slides.style.transform = 'translateX(-' + (venueIdx * 100) + '%)';
+      document.querySelectorAll('.vdot').forEach((d, i) => d.classList.toggle('active', i === venueIdx));
     }
+    // Touch swipe support
+    (function() {
+      const wrap = document.getElementById('venue-slider');
+      if (!wrap) return;
+      let tx = 0;
+      wrap.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+      wrap.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - tx;
+        if (Math.abs(dx) > 40) slideVenue(dx < 0 ? 1 : -1);
+      }, { passive: true });
+    })();
   </script>
 
 </body>
