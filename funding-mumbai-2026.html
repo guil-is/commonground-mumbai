@@ -316,9 +316,10 @@
       width: 100%; height: 268px; overflow: hidden; position: relative;
       background: var(--dark-green);
     }
-    .venue-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    /* img must sit above the absolute-positioned bg placeholder */
+    .venue-photo img { width: 100%; height: 100%; object-fit: cover; display: block; position: relative; z-index: 1; }
     .venue-photo-bg {
-      position: absolute; inset: 0;
+      position: absolute; inset: 0; z-index: 0;
       background: linear-gradient(135deg, var(--dark-green) 0%, #2d6a4f 100%);
       display: flex; align-items: center; justify-content: center;
     }
@@ -367,8 +368,8 @@
     }
     .vslide-btn:hover { box-shadow: 0 6px 28px rgba(28,69,50,0.32); transform: translateY(calc(-50% - 2px)); }
     .vslide-btn svg { width: 22px; height: 22px; flex-shrink: 0; }
-    .vslide-prev { left: -26px; }
-    .vslide-next { right: -26px; }
+    .vslide-prev { left: 1.25rem; }
+    .vslide-next { right: calc(5rem + 1.25rem); }
     /* Dots */
     .vslide-dots {
       display: flex; justify-content: center; gap: 0.5rem; padding: 0.875rem 0 0;
@@ -455,8 +456,8 @@
       .metric + .metric::before { display: none; }
       .venue-slide-body { padding: 1.25rem 1.25rem 1.5rem; }
       .venue-procon { grid-template-columns: 1fr; gap: 0.45rem; }
-      .vslide-prev { left: 0.5rem; }
-      .vslide-next { right: 0.5rem; }
+      .vslide-prev { left: 0.75rem; }
+      .vslide-next { right: calc(5rem + 0.75rem); }
     }
   </style>
 </head>
