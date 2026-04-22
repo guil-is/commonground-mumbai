@@ -3,9 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Common Ground Mumbai 2026 — Partner Overview</title>
+  <title>Common Ground Mumbai 2026: Partner Overview</title>
   <meta name="description" content="A collaborative pop-up hub in Mumbai during India Blockchain Week 2026. Co-fund a space, run your programming, connect across the Ethereum ecosystem.">
   <meta name="robots" content="noindex">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://commonground-mumbai.netlify.app/partner">
+  <meta property="og:title"       content="Common Ground Mumbai 2026: Partner Overview">
+  <meta property="og:description" content="A collaborative pop-up hub in Mumbai during India Blockchain Week 2026. Co-fund a space, run your programming, connect across the Ethereum ecosystem.">
+  <meta property="og:image"            content="https://commonground-mumbai.netlify.app/assets/OG_image.jpg?v=3">
+  <meta property="og:image:secure_url" content="https://commonground-mumbai.netlify.app/assets/OG_image.jpg?v=3">
+  <meta property="og:image:type"       content="image/jpeg">
+  <meta property="og:image:width"      content="1200">
+  <meta property="og:image:height"     content="630">
+  <meta property="og:image:alt"        content="Common Ground Mumbai 2026 by Regens Unite">
+  <!-- Twitter / X -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Common Ground Mumbai 2026: Partner Overview">
+  <meta name="twitter:description" content="A collaborative pop-up hub in Mumbai during India Blockchain Week 2026. Co-fund a space, run your programming, connect across the Ethereum ecosystem.">
+  <meta name="twitter:image"       content="https://commonground-mumbai.netlify.app/assets/OG_image.jpg?v=3">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -239,13 +256,17 @@
     }
     .feat-icon svg { width: 1.375rem; height: 1.375rem; }
     .feat-label {
-      font-family: var(--barlow); font-size: 1rem; font-weight: 800;
-      letter-spacing: 0.08em; text-transform: uppercase;
+      font-family: var(--barlow); font-size: 1.375rem; font-weight: 800;
+      letter-spacing: 0.04em; text-transform: uppercase;
       color: var(--dark-green); margin-bottom: 0.5rem;
     }
     .feat-desc {
       font-family: var(--mulish); font-size: 1rem;
       line-height: 1.65; color: var(--mid-green);
+    }
+    .concept-feat + .concept-feat {
+      border-top: 1px solid rgba(28,69,50,0.09);
+      padding-top: 2rem;
     }
 
     /* Lightbox */
@@ -509,7 +530,7 @@
   <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
     <div class="lightbox-inner">
       <div class="lightbox-close" onclick="closeLightbox()">✕ Close</div>
-      <iframe id="yt-frame" src="" title="Regens Unite — Event Highlights" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <iframe id="yt-frame" src="" title="Regens Unite: Event Highlights" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
   </div>
 
@@ -537,7 +558,7 @@
         Common Ground<br><span class="accent">Mumbai</span>
       </h1>
       <p class="hero-sub">
-        A collaborative pop-up hub for the Ethereum ecosystem —
+        A collaborative pop-up hub for the Ethereum ecosystem,
         co-funded and co-programmed in Mumbai during India Blockchain Week.
       </p>
       <div class="hero-meta">
@@ -567,7 +588,7 @@
           <p class="concept-body reveal d2">
             Common Ground is a week-long pop-up space in Mumbai, co-created by
             multiple organisations from the Ethereum and Web3 ecosystem. We pool
-            resources to secure a locally-owned venue — a base for co-working,
+            resources to secure a locally-owned venue, a base for co-working,
             programming, and community gathering during India Blockchain Week.
           </p>
           <div class="vid-thumb reveal d3" onclick="openLightbox()" role="button" tabindex="0" aria-label="Play Regen Village Brussels 2024 highlights">
@@ -577,7 +598,7 @@
                 <svg viewBox="0 0 24 24" fill="none"><path d="M6 4.75L18.25 12L6 19.25V4.75Z" fill="#1c4532"/></svg>
               </div>
             </div>
-            <div class="vid-caption">Regen Village Brussels 2024 — Highlights</div>
+            <div class="vid-caption">Regen Village Brussels 2024 · Highlights</div>
           </div>
         </div>
 
@@ -593,7 +614,7 @@
             </div>
             <div>
               <div class="feat-label">Share costs &amp; resources</div>
-              <div class="feat-desc">Pool venue, production, and operational costs with other aligned organisations. Better space, lower per-partner cost — infrastructure is shared, vision is yours.</div>
+              <div class="feat-desc">Pool venue, production, and operational costs with other aligned organisations. Better space, lower per-partner cost. Infrastructure is shared; vision is yours.</div>
             </div>
           </div>
 
@@ -606,7 +627,7 @@
             </div>
             <div>
               <div class="feat-label">A home base for your community</div>
-              <div class="feat-desc">Give your people a place to land. A shared hub means your community has somewhere to gather, rest, and connect — all week long, not just during your slot.</div>
+              <div class="feat-desc">Give your people a place to land. A shared hub means your community has somewhere to gather, rest, and connect all week long, not just during your slot.</div>
             </div>
           </div>
 
@@ -619,7 +640,7 @@
             </div>
             <div>
               <div class="feat-label">Co-fund a locally-owned space</div>
-              <div class="feat-desc">In Brussels we co-funded the Commons Hub — a permanent community space that outlasted the event. We want to do the same in Mumbai, and leave something behind.</div>
+              <div class="feat-desc">In Brussels we co-funded the Commons Hub, a permanent community space that outlasted the event. We want to do the same in Mumbai, and leave something behind.</div>
             </div>
           </div>
 
@@ -728,7 +749,7 @@
             <div class="tier-per">per day slot</div>
           </div>
           <hr class="tier-divider">
-          <p class="tier-desc">Own a full day — your speakers, your agenda, your community. Full creative control inside the shared hub.</p>
+          <p class="tier-desc">Own a full day: your speakers, your agenda, your community. Full creative control inside the shared hub.</p>
           <ul class="tier-feats">
             <li class="tier-feat">Full day of programming (your format)</li>
             <li class="tier-feat">Co-branding all week on-site &amp; online</li>
@@ -777,7 +798,7 @@
             <div class="tier-per">week-long presence</div>
           </div>
           <hr class="tier-divider">
-          <p class="tier-desc">Branded presence at the hub for the full week — one activation slot and logo across all materials.</p>
+          <p class="tier-desc">Branded presence at the hub for the full week, with one activation slot and logo across all materials.</p>
           <ul class="tier-feats">
             <li class="tier-feat">Branded presence all week</li>
             <li class="tier-feat">One session or activation slot</li>
@@ -803,7 +824,7 @@
         <a href="mailto:cori@regensunite.earth" class="btn-ghost" style="flex-shrink:0; white-space:nowrap;">Let's talk →</a>
       </div>
 
-      <p class="tiers-note reveal">These are initial price points — the right fit matters more than the tier. Let's start a conversation.</p>
+      <p class="tiers-note reveal">These are initial price points. The right fit matters more than the tier. Let's start a conversation.</p>
 
     </div>
   </section>
@@ -817,7 +838,7 @@
         Let's talk about<br>your involvement.
       </h2>
       <p class="cta-body reveal d2">
-        We're in the early stages — the right moment to shape what
+        We're in the early stages. This is the right moment to shape what
         Common Ground Mumbai becomes. Drop us a line.
       </p>
       <div class="cta-actions reveal d3">
