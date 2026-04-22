@@ -46,8 +46,9 @@
 
       /* Surfaces */
       --cream:        #ede8dc;   /* primary background */
+      --cream-light:  #f5f1e8;   /* alternate section bg — lighter warm beige */
       --cream-dark:   #e3ddd1;   /* subtle variant */
-      --sage-light:   #d8e0c4;   /* alternate sections */
+      --sage-light:   #d8e0c4;   /* badges, accents */
       --sage-mid:     #ccd6b0;   /* deeper alternate */
       --white:        #ffffff;
 
@@ -651,9 +652,9 @@
     }
 
     /* ============================================================
-       4-DAY FORMAT — sage green bg
+       4-DAY FORMAT
        ============================================================ */
-    .format { background: var(--sage-light); }
+    .format { background: var(--cream-light); }
 
     .format-header {
       display: grid;
@@ -847,9 +848,9 @@
     }
 
     /* ============================================================
-       PAST EVENTS — sage bg, list style like the RU events list
+       PAST EVENTS
        ============================================================ */
-    .proof { background: var(--sage-light); }
+    .proof { background: var(--cream-light); }
 
     .proof-layout {
       display: grid;
@@ -1556,7 +1557,7 @@
     }
 
     /* ============================================================
-       WAVE DIVIDER — dark green → sage-light
+       WAVE DIVIDER — dark green → cream-light
        ============================================================ */
     .wave-dg-cream {
       width: 100%;
@@ -1570,7 +1571,7 @@
       content: '';
       position: absolute;
       bottom: 0; left: 0; right: 0; top: 0;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 72' preserveAspectRatio='none'%3E%3Cpath d='M0,28 C180,68 380,0 600,32 C820,64 1020,8 1200,32 L1200,72 L0,72 Z' fill='%23d8e0c4'/%3E%3C/svg%3E") no-repeat bottom center / 100% 100%;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 72' preserveAspectRatio='none'%3E%3Cpath d='M0,28 C180,68 380,0 600,32 C820,64 1020,8 1200,32 L1200,72 L0,72 Z' fill='%23f5f1e8'/%3E%3C/svg%3E") no-repeat bottom center / 100% 100%;
     }
 
     /* ============================================================
@@ -1695,7 +1696,7 @@
     /* ============================================================
        GALLERY
        ============================================================ */
-    .gallery-section { background: var(--sage-light); }
+    .gallery-section { background: var(--cream-light); }
 
     .gallery-grid {
       display: grid;
@@ -1987,7 +1988,7 @@
     /* ============================================================
        RECENT UPDATES — noticeboard
        ============================================================ */
-    .updates-section { background: var(--sage-light); }
+    .updates-section { background: var(--cream-light); }
     .updates-two-col {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -2396,7 +2397,7 @@
   </section>
 
   <!-- FAQ -->
-  <section class="section" id="faq" style="background:var(--sage-light);">
+  <section class="section" id="faq" style="background:var(--cream-light);">
     <div class="section-inner">
 
       <p class="section-label reveal">FAQ</p>
@@ -2409,7 +2410,7 @@
             What exactly is Common Ground Mumbai?
             <span class="faq-icon">+</span>
           </button>
-          <div class="faq-answer">A collaborative pop-up space co-created by multiple organisations. We pool resources to secure a shared venue in Mumbai the week before Devcon — a base for co-working, programming and gathering for the entire Ethereum community.</div>
+          <div class="faq-answer">A collaborative pop-up space co-created by multiple organisations. We pool resources to secure a shared venue in Mumbai during Devcon season — a base for co-working, programming and gathering for the entire Ethereum community.</div>
         </div>
 
         <div class="faq-item">
@@ -2441,7 +2442,7 @@
             When and where is it?
             <span class="faq-icon">+</span>
           </button>
-          <div class="faq-answer">The week before Devcon 2026, in the BKC district of Mumbai — walking distance from the main Devcon venue. Exact dates will be confirmed once the Devcon schedule is published.</div>
+          <div class="faq-answer">Timed around Devcon 2026, in Mumbai. Exact dates will be confirmed once the Devcon schedule is published.</div>
         </div>
 
         <div class="faq-item">

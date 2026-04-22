@@ -132,6 +132,10 @@
       font-weight: 900; line-height: 1.05; color: var(--dark-green);
       margin-bottom: 1.25rem; letter-spacing: -0.01em;
     }
+    .section-body {
+      font-family: var(--mulish); font-size: 1.05rem; line-height: 1.78;
+      color: var(--mid-green); margin-bottom: 1.25rem;
+    }
 
     /* ── CONCEPT (2-col with video) ──────────────────────────────── */
     .concept-grid {
@@ -214,86 +218,166 @@
       padding: 1.875rem 1.625rem;
       border: 1px solid rgba(28,69,50,0.09);
       box-shadow: 0 2px 12px rgba(28,69,50,0.06);
-      display: flex; flex-direction: column; gap: 1.125rem;
+      display: flex; flex-direction: column; gap: 1rem;
     }
-    .tier-card.featured { background: var(--dark-green); border-color: var(--dark-green); box-shadow: 0 8px 32px rgba(28,69,50,0.22); }
+    /* Big tier icon */
+    .tier-icon { width: 44px; height: 44px; color: var(--terracotta); margin-bottom: 0.125rem; }
+    .tier-icon svg { width: 100%; height: 100%; display: block; }
     .tier-label {
       font-family: var(--barlow); font-size: 0.65rem; font-weight: 900;
       letter-spacing: 0.16em; text-transform: uppercase; color: var(--terracotta);
     }
-    .tier-card.featured .tier-label { color: var(--sage-light); opacity: 0.8; }
     .tier-price { font-family: var(--barlow); font-size: 2.625rem; font-weight: 900; color: var(--dark-green); line-height: 1; }
-    .tier-card.featured .tier-price { color: white; }
     .tier-per { font-family: var(--mulish); font-size: 0.78rem; color: rgba(28,69,50,0.4); margin-top: 0.15rem; }
-    .tier-card.featured .tier-per { color: rgba(255,255,255,0.38); }
     .tier-rule { height: 1px; background: rgba(28,69,50,0.08); }
-    .tier-card.featured .tier-rule { background: rgba(255,255,255,0.11); }
-    .tier-features { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
+    .tier-features { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; flex: 1; }
     .tier-feature {
+      display: flex; align-items: flex-start; gap: 0.5rem;
       font-family: var(--mulish); font-size: 0.875rem; line-height: 1.4;
-      color: var(--mid-green); padding-left: 1.2rem; position: relative;
+      color: var(--mid-green);
     }
-    .tier-card.featured .tier-feature { color: rgba(255,255,255,0.76); }
-    .tier-feature::before { content: '→'; position: absolute; left: 0; font-size: 0.72rem; color: var(--terracotta); top: 0.05em; }
-    .tier-card.featured .tier-feature::before { color: var(--sage-light); }
+    /* Small contextual icons */
+    .fi { flex-shrink: 0; width: 13px; height: 13px; color: var(--terracotta); opacity: 0.7; margin-top: 2px; }
+    .fi svg { width: 100%; height: 100%; display: block; }
     .tier-avail { font-family: var(--barlow); font-size: 0.63rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(28,69,50,0.28); }
-    .tier-card.featured .tier-avail { color: rgba(255,255,255,0.28); }
 
     .inkind {
-      margin-top: 1.125rem; border: 1px solid rgba(28,69,50,0.1);
-      border-radius: 1rem; padding: 1.375rem 1.75rem;
+      margin-top: 1.125rem;
+      background: white;
+      border: 1px solid rgba(28,69,50,0.09);
+      box-shadow: 0 2px 12px rgba(28,69,50,0.06);
+      border-radius: 1.25rem; padding: 1.625rem 1.75rem;
       display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
     }
     .inkind-title { font-family: var(--barlow); font-size: 1rem; font-weight: 800; color: var(--dark-green); margin-bottom: 0.25rem; }
     .inkind-desc { font-family: var(--mulish); font-size: 0.85rem; color: var(--mid-green); }
 
+    /* ── METRICS STRIP ──────────────────────────────────────────── */
+    .metrics-strip {
+      background: var(--dark-green); padding: 3.5rem 2rem; position: relative;
+    }
+    .metrics-inner {
+      max-width: 900px; margin: 0 auto; display: flex;
+    }
+    .metric {
+      flex: 1; text-align: center; padding: 0 1.5rem; position: relative;
+    }
+    .metric + .metric::before {
+      content: ''; position: absolute; left: 0; top: 50%;
+      transform: translateY(-50%); height: 2.5rem; width: 1px;
+      background: rgba(255,255,255,0.12);
+    }
+    .metric-num {
+      font-family: var(--barlow); font-size: clamp(2.25rem, 4.5vw, 3rem);
+      font-weight: 900; color: var(--sage-light); line-height: 1; margin-bottom: 0.375rem;
+    }
+    .metric-label {
+      font-family: var(--mulish); font-size: 0.825rem;
+      color: rgba(255,255,255,0.5); line-height: 1.5;
+    }
+
     /* ── BUDGET ──────────────────────────────────────────────────── */
     .budget-table {
       width: 100%; border-collapse: collapse; margin-top: 2.5rem;
-      background: white; border-radius: 1rem; overflow: hidden;
-      border: 1px solid rgba(28,69,50,0.08);
+      border-radius: 1rem; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
     }
     .budget-table thead th {
       font-family: var(--barlow); font-size: 0.6rem; font-weight: 900;
-      letter-spacing: 0.16em; text-transform: uppercase; color: rgba(28,69,50,0.36);
+      letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.32);
       padding: 1rem 1.5rem; text-align: left;
-      background: rgba(28,69,50,0.03); border-bottom: 1px solid rgba(28,69,50,0.07);
+      background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.09);
     }
-    .budget-table tbody td { padding: 0.9rem 1.5rem; border-bottom: 1px solid rgba(28,69,50,0.06); }
+    .budget-table tbody td { padding: 0.95rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
     .budget-table tbody tr:last-child td { border-bottom: none; }
-    .budget-item { font-family: var(--mulish); font-size: 0.9rem; font-weight: 600; color: var(--dark-green); }
-    .budget-amount { font-family: var(--barlow); font-size: 0.9rem; font-weight: 700; color: var(--mid-green); text-align: right; white-space: nowrap; }
+    .budget-item { font-family: var(--mulish); font-size: 0.9rem; font-weight: 500; color: rgba(255,255,255,0.82); }
+    .budget-amount { font-family: var(--barlow); font-size: 0.9rem; font-weight: 700; color: rgba(255,255,255,0.55); text-align: right; white-space: nowrap; }
     .budget-table tfoot td {
-      padding: 1rem 1.5rem; border-top: 2px solid rgba(28,69,50,0.1);
-      background: rgba(28,69,50,0.04); font-family: var(--barlow); font-weight: 900; color: var(--dark-green);
+      padding: 1.1rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.08); font-family: var(--barlow); font-weight: 900;
     }
-    .budget-table tfoot .budget-amount { font-size: 1rem; color: var(--dark-green); }
-    .budget-note { font-family: var(--mulish); font-size: 0.8rem; color: rgba(255,255,255,0.38); line-height: 1.65; margin-top: 1.125rem; font-style: italic; }
+    .budget-table tfoot .budget-item { color: white; font-size: 0.95rem; }
+    .budget-table tfoot .budget-amount { font-size: 1.05rem; color: white; }
+    .budget-note { font-family: var(--mulish); font-size: 0.8rem; color: rgba(255,255,255,0.35); line-height: 1.65; margin-top: 1.25rem; font-style: italic; }
+
+    /* ── VENUES SLIDER ───────────────────────────────────────────── */
+    .venues-scroll {
+      overflow-x: auto; display: flex; gap: 1.125rem;
+      padding: 2rem 0 1rem; margin-top: 2.5rem;
+      scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; cursor: grab;
+    }
+    .venues-scroll::-webkit-scrollbar { display: none; }
+    .venues-scroll:active { cursor: grabbing; }
+    .venue-card {
+      flex-shrink: 0; width: 300px; scroll-snap-align: start;
+      background: white; border-radius: 1.25rem;
+      padding: 1.625rem 1.5rem 1.75rem;
+      border: 1px solid rgba(28,69,50,0.09);
+      box-shadow: 0 2px 12px rgba(28,69,50,0.06);
+      display: flex; flex-direction: column; gap: 1rem; position: relative;
+    }
+    .venue-pick {
+      position: absolute; top: -0.7rem; left: 1.5rem;
+      background: var(--terracotta); color: white;
+      font-family: var(--barlow); font-size: 0.57rem; font-weight: 900;
+      letter-spacing: 0.13em; text-transform: uppercase;
+      padding: 0.2rem 0.8rem; border-radius: 50px;
+    }
+    .venue-name {
+      font-family: var(--barlow); font-size: 1.05rem; font-weight: 800;
+      color: var(--dark-green); line-height: 1.2;
+    }
+    .venue-meta {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+    }
+    .venue-tag {
+      font-family: var(--barlow); font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      background: rgba(28,69,50,0.06); color: var(--mid-green);
+      padding: 0.22rem 0.7rem; border-radius: 50px;
+    }
+    .venue-rule { height: 1px; background: rgba(28,69,50,0.07); }
+    .venue-pros, .venue-cons { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+    .venue-pro, .venue-con {
+      font-family: var(--mulish); font-size: 0.825rem; line-height: 1.38;
+      padding-left: 1.25rem; position: relative;
+    }
+    .venue-pro { color: var(--mid-green); }
+    .venue-pro::before { content: '✓'; position: absolute; left: 0; color: #2b7a5c; font-weight: 700; font-size: 0.75rem; }
+    .venue-con { color: rgba(28,69,50,0.5); }
+    .venue-con::before { content: '–'; position: absolute; left: 0; color: var(--terracotta); font-weight: 700; }
+    .venue-scroll-hint {
+      font-family: var(--barlow); font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.08em; color: rgba(28,69,50,0.35);
+      margin-top: 0.5rem; display: flex; align-items: center; gap: 0.4rem;
+    }
 
     /* ── CTA ─────────────────────────────────────────────────────── */
     .cta-section {
-      background: var(--cream); padding: 5.5rem 2rem; text-align: center;
+      background: var(--dark-green); padding: 5.5rem 2rem; text-align: center;
     }
     .cta-heading {
       font-family: var(--barlow); font-size: clamp(2.25rem, 6vw, 4rem);
-      font-weight: 900; color: var(--dark-green);
+      font-weight: 900; color: white;
       line-height: 1.0; letter-spacing: -0.02em; margin-bottom: 0.875rem;
     }
+    .cta-heading .accent { color: var(--sage-light); }
     .cta-sub {
-      font-family: var(--mulish); font-size: 1rem; color: var(--mid-green);
+      font-family: var(--mulish); font-size: 1rem; color: rgba(255,255,255,0.58);
       line-height: 1.7; max-width: 44ch; margin: 0 auto 2.5rem;
     }
     .cta-name {
       font-family: var(--barlow); font-size: 0.66rem; font-weight: 800;
       letter-spacing: 0.12em; text-transform: uppercase;
-      color: rgba(28,69,50,0.38); margin-bottom: 0.625rem;
+      color: rgba(255,255,255,0.32); margin-bottom: 0.625rem;
     }
     .cta-email-btn {
       font-family: var(--barlow); font-size: 0.975rem; font-weight: 800;
-      background: var(--dark-green); color: white;
+      background: white; color: var(--dark-green);
       padding: 1rem 2.75rem; border-radius: 50px; display: inline-block; transition: background 0.2s;
     }
-    .cta-email-btn:hover { background: var(--mid-green); }
+    .cta-email-btn:hover { background: var(--sage-light); }
 
     /* ── FOOTER ──────────────────────────────────────────────────── */
     .footer {
@@ -339,6 +423,9 @@
       .budget-table tbody td,
       .budget-table tfoot td { padding: 0.75rem 1rem; }
       .cta-section { padding: 4rem 1.25rem; }
+      .metrics-strip { padding: 2.75rem 1.25rem; }
+      .metrics-inner { flex-direction: column; gap: 1.75rem; }
+      .metric + .metric::before { display: none; }
     }
   </style>
 </head>
@@ -384,7 +471,7 @@
 
 
   <!-- ── THE CONCEPT ───────────────────────────────────────────── -->
-  <section class="section" style="background: var(--cream);">
+  <section class="section wave-to-dg" style="background: var(--cream);">
     <div class="section-inner">
       <div class="concept-grid">
 
@@ -394,10 +481,7 @@
             A shared hub.<br><span class="accent">Your event inside it.</span>
           </h2>
           <p class="concept-body reveal d2">
-            Common Ground is a week-long pop-up space in Mumbai, running the week before Devcon. Partners take over a full day — their speakers, their agenda, their community — inside a shared, locally-owned venue. Infrastructure and costs are split. Everything else is yours.
-          </p>
-          <p class="concept-proof reveal d2">
-            <strong>25+ events</strong> produced across Devcon seasons &nbsp;·&nbsp; <strong>600+ attendees</strong> &nbsp;·&nbsp; <strong>€25k</strong> raised &amp; deployed
+            Common Ground is a week-long pop-up space in Mumbai, timed around Devcon. Partners take over a full day — their speakers, their agenda, their community — inside a shared, locally-owned venue. Infrastructure and costs are split. Everything else is yours.
           </p>
           <a href="index.html" class="concept-link reveal d3">Learn more about the concept →</a>
         </div>
@@ -420,6 +504,25 @@
   </section>
 
 
+  <!-- ── METRICS STRIP ────────────────────────────────────────── -->
+  <div class="metrics-strip wave-to-cream">
+    <div class="metrics-inner">
+      <div class="metric reveal">
+        <div class="metric-num">25+</div>
+        <div class="metric-label">events produced<br>across Devcon seasons</div>
+      </div>
+      <div class="metric reveal d1">
+        <div class="metric-num">600+</div>
+        <div class="metric-label">attendees across<br>all editions</div>
+      </div>
+      <div class="metric reveal d2">
+        <div class="metric-num">$25k</div>
+        <div class="metric-label">raised &amp; deployed<br>to public goods</div>
+      </div>
+    </div>
+  </div>
+
+
   <!-- ── PARTNERSHIP OPTIONS ───────────────────────────────────── -->
   <section class="section wave-to-dg" id="tiers" style="background: var(--cream);">
     <div class="section-inner">
@@ -428,50 +531,62 @@
 
       <div class="tiers-grid">
 
+        <!-- Day Partner -->
         <div class="tier-card reveal d1">
+          <div class="tier-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/><path d="M8 14l2.5 2.5L16 11"/></svg>
+          </div>
           <div class="tier-label">Day Partner</div>
           <div>
-            <div class="tier-price">€15,000</div>
+            <div class="tier-price">$15,000</div>
             <div class="tier-per">per day slot</div>
           </div>
           <div class="tier-rule"></div>
           <ul class="tier-features">
-            <li class="tier-feature">Own a full day — your agenda, speakers &amp; format</li>
-            <li class="tier-feature">Full creative control over your programming</li>
-            <li class="tier-feature">Co-branding across all event materials</li>
-            <li class="tier-feature">Logo on signage, programme &amp; comms all week</li>
-            <li class="tier-feature">Featured in press &amp; outreach</li>
+            <li class="tier-feature"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></svg></span>Own a full day — your agenda, speakers &amp; format</li>
+            <li class="tier-feature"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>Full creative control over your programming</li>
+            <li class="tier-feature"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>Co-branding across all event materials</li>
+            <li class="tier-feature"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span>Logo on signage, programme &amp; comms all week</li>
+            <li class="tier-feature"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></span>Featured in press &amp; outreach</li>
           </ul>
           <div class="tier-avail">5 slots available</div>
         </div>
 
-        <div class="tier-card featured reveal d2">
+        <!-- Programme Partner -->
+        <div class="tier-card reveal d2">
+          <div class="tier-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="9" y1="22" x2="15" y2="22"/></svg>
+          </div>
           <div class="tier-label">Programme Partner</div>
           <div>
-            <div class="tier-price">€8,000</div>
+            <div class="tier-price">$8,000</div>
             <div class="tier-per">per session block</div>
           </div>
           <div class="tier-rule"></div>
           <ul class="tier-features">
-            <li class="tier-feature">Half-day track or major evening session</li>
-            <li class="tier-feature">Named slot in the public programme</li>
-            <li class="tier-feature">Co-branding on session materials</li>
-            <li class="tier-feature">Logo presence on-site &amp; online</li>
+            <li class="tier-feature"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>Half-day track or major evening session</li>
+            <li class="tier-feature"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="3" cy="6" r="1" fill="currentColor" stroke="none"/><circle cx="3" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="3" cy="18" r="1" fill="currentColor" stroke="none"/></svg></span>Named slot in the public programme</li>
+            <li class="tier-feature"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>Co-branding on session materials</li>
+            <li class="tier-feature"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>Logo presence on-site &amp; online</li>
           </ul>
           <div class="tier-avail">Limited availability</div>
         </div>
 
+        <!-- Community Partner -->
         <div class="tier-card reveal d3">
+          <div class="tier-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
           <div class="tier-label">Community Partner</div>
           <div>
-            <div class="tier-price">€4,000</div>
+            <div class="tier-price">$4,000</div>
             <div class="tier-per">week-long presence</div>
           </div>
           <div class="tier-rule"></div>
           <ul class="tier-features">
-            <li class="tier-feature">Branded presence at the hub all week</li>
-            <li class="tier-feature">One session or activation slot</li>
-            <li class="tier-feature">Logo across all materials</li>
+            <li class="tier-feature"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></span>Branded presence at the hub all week</li>
+            <li class="tier-feature"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>One session or activation slot</li>
+            <li class="tier-feature"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span>Logo across all materials</li>
           </ul>
           <div class="tier-avail">Open</div>
         </div>
@@ -506,46 +621,163 @@
         <tbody>
           <tr>
             <td class="budget-item">Venue — locally-owned creative space, 1 week, 150–200 pax</td>
-            <td class="budget-amount">€8,000 – €16,000</td>
+            <td class="budget-amount">$8,000 – $16,000</td>
           </tr>
           <tr>
             <td class="budget-item">F&amp;B — catering, coffee service, evening events</td>
-            <td class="budget-amount">€22,000 – €30,000</td>
+            <td class="budget-amount">$22,000 – $30,000</td>
           </tr>
           <tr>
             <td class="budget-item">A/V &amp; production</td>
-            <td class="budget-amount">€4,000 – €10,000</td>
+            <td class="budget-amount">$4,000 – $10,000</td>
           </tr>
           <tr>
             <td class="budget-item">Local coordinator + on-site crew</td>
-            <td class="budget-amount">€5,000 – €9,000</td>
+            <td class="budget-amount">$5,000 – $9,000</td>
           </tr>
           <tr>
             <td class="budget-item">Core team travel &amp; accommodation</td>
-            <td class="budget-amount">€6,000 – €10,000</td>
+            <td class="budget-amount">$6,000 – $10,000</td>
           </tr>
           <tr>
             <td class="budget-item">Permits, GST &amp; local compliance</td>
-            <td class="budget-amount">€3,000 – €6,000</td>
+            <td class="budget-amount">$3,000 – $6,000</td>
           </tr>
           <tr>
             <td class="budget-item">Design, branding &amp; print</td>
-            <td class="budget-amount">€2,000 – €4,000</td>
+            <td class="budget-amount">$2,000 – $4,000</td>
           </tr>
           <tr>
             <td class="budget-item">Contingency (15%)</td>
-            <td class="budget-amount">€8,000 – €13,000</td>
+            <td class="budget-amount">$8,000 – $13,000</td>
           </tr>
         </tbody>
         <tfoot>
           <tr>
             <td class="budget-item">Total target</td>
-            <td class="budget-amount">~€58,000 – €98,000</td>
+            <td class="budget-amount">~$58,000 – $98,000</td>
           </tr>
         </tfoot>
       </table>
 
       <p class="budget-note reveal d3">Based on Mumbai market research for Oct/Nov 2026. F&B is the largest single cost at this scale. Venue pricing reflects Devcon week demand — we're targeting locally-owned creative spaces (e.g. G5A Foundation, Worli) which offer mission-aligned flexibility. A finalised budget will be shared with confirmed partners before commitments are locked in.</p>
+    </div>
+  </section>
+
+
+  <!-- ── VENUE SHORTLIST ──────────────────────────────────────── -->
+  <section class="section wave-to-dg" id="venues" style="background: var(--cream);">
+    <div class="section-inner">
+      <p class="section-label reveal">Venue Shortlist</p>
+      <h2 class="section-heading reveal d1">Where we're<br><span class="accent">looking.</span></h2>
+      <p class="section-body reveal d2">No hotel ballrooms. These are our current top picks — locally-owned, character-rich spaces scouted for values fit and capacity. Nothing locked in yet.</p>
+
+      <div class="venues-scroll reveal d2" id="venues-scroll">
+
+        <!-- G5A Foundation — TOP PICK -->
+        <div class="venue-card">
+          <div class="venue-pick">★ Top Pick</div>
+          <div class="venue-name">G5A Foundation</div>
+          <div class="venue-meta">
+            <span class="venue-tag">Worli</span>
+            <span class="venue-tag">~165 pax</span>
+            <span class="venue-tag">Non-profit</span>
+          </div>
+          <div class="venue-rule"></div>
+          <ul class="venue-pros">
+            <li class="venue-pro">Repurposed textile mill — strong cultural identity</li>
+            <li class="venue-pro">Values-aligned non-profit organisation</li>
+            <li class="venue-pro">Flexible with non-commercial bookings</li>
+            <li class="venue-pro">Multiple indoor + courtyard spaces</li>
+          </ul>
+          <ul class="venue-cons">
+            <li class="venue-con">Capacity cap ~165 pax</li>
+            <li class="venue-con">No published rates — needs direct negotiation</li>
+          </ul>
+        </div>
+
+        <!-- CIRQA Bombay -->
+        <div class="venue-card">
+          <div class="venue-name">CIRQA Bombay</div>
+          <div class="venue-meta">
+            <span class="venue-tag">Lower Parel</span>
+            <span class="venue-tag">~200 pax</span>
+            <span class="venue-tag">Event buyout</span>
+          </div>
+          <div class="venue-rule"></div>
+          <ul class="venue-pros">
+            <li class="venue-pro">Up to 200 pax, flexible full-buyout</li>
+            <li class="venue-pro">In-house AV and production support</li>
+            <li class="venue-pro">Well-established event venue</li>
+          </ul>
+          <ul class="venue-cons">
+            <li class="venue-con">Less distinct cultural character</li>
+            <li class="venue-con">Likely Devcon-premium pricing</li>
+          </ul>
+        </div>
+
+        <!-- antiSOCIAL -->
+        <div class="venue-card">
+          <div class="venue-name">antiSOCIAL</div>
+          <div class="venue-meta">
+            <span class="venue-tag">Mathuradas Mill</span>
+            <span class="venue-tag">~500 pax</span>
+            <span class="venue-tag">Live music</span>
+          </div>
+          <div class="venue-rule"></div>
+          <ul class="venue-pros">
+            <li class="venue-pro">Adamson AV system — best sound in the city</li>
+            <li class="venue-pro">Iconic Mumbai venue, strong brand</li>
+            <li class="venue-pro">Great for evening programming</li>
+          </ul>
+          <ul class="venue-cons">
+            <li class="venue-con">Nightclub vibe — awkward for daytime sessions</li>
+            <li class="venue-con">Higher evening buyout rates</li>
+          </ul>
+        </div>
+
+        <!-- Royal Opera House -->
+        <div class="venue-card">
+          <div class="venue-name">Royal Opera House</div>
+          <div class="venue-meta">
+            <span class="venue-tag">Charni Road</span>
+            <span class="venue-tag">~800 pax</span>
+            <span class="venue-tag">Heritage</span>
+          </div>
+          <div class="venue-rule"></div>
+          <ul class="venue-pros">
+            <li class="venue-pro">UNESCO heritage building — visually iconic</li>
+            <li class="venue-pro">800 pax — strong for a keynote day</li>
+            <li class="venue-pro">High-profile location</li>
+          </ul>
+          <ul class="venue-cons">
+            <li class="venue-con">Rigid theatre seating — poor for workshops</li>
+            <li class="venue-con">Too large and expensive for full-week format</li>
+          </ul>
+        </div>
+
+        <!-- Method Gallery -->
+        <div class="venue-card">
+          <div class="venue-name">Method Gallery</div>
+          <div class="venue-meta">
+            <span class="venue-tag">Kala Ghoda</span>
+            <span class="venue-tag">80–100 pax</span>
+            <span class="venue-tag">Art gallery</span>
+          </div>
+          <div class="venue-rule"></div>
+          <ul class="venue-pros">
+            <li class="venue-pro">Strong creative identity, arts district</li>
+            <li class="venue-pro">Intimate, community-feel atmosphere</li>
+            <li class="venue-pro">Good as satellite or side-event space</li>
+          </ul>
+          <ul class="venue-cons">
+            <li class="venue-con">Too small for main venue</li>
+            <li class="venue-con">Limited production infrastructure</li>
+          </ul>
+        </div>
+
+      </div>
+      <p class="venue-scroll-hint">← Drag to explore →</p>
     </div>
   </section>
 
@@ -597,6 +829,21 @@
       document.body.style.overflow = '';
     }
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox({ target: document.getElementById('lightbox') }); });
+
+    // Venue slider — drag to scroll
+    const slider = document.getElementById('venues-scroll');
+    if (slider) {
+      let isDown = false, startX, scrollLeft;
+      slider.addEventListener('mousedown', e => {
+        isDown = true; startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft;
+      });
+      ['mouseleave','mouseup'].forEach(ev => slider.addEventListener(ev, () => { isDown = false; }));
+      slider.addEventListener('mousemove', e => {
+        if (!isDown) return;
+        e.preventDefault();
+        slider.scrollLeft = scrollLeft - (e.pageX - slider.offsetLeft - startX) * 1.2;
+      });
+    }
   </script>
 
 </body>
