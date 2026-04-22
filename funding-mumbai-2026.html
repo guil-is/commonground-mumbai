@@ -303,14 +303,15 @@
     .budget-note { font-family: var(--mulish); font-size: 0.8rem; color: rgba(255,255,255,0.35); line-height: 1.65; margin-top: 1.25rem; font-style: italic; }
 
     /* ── VENUE SLIDER ───────────────────────────────────────────── */
-    .venue-slider { position: relative; margin-top: 2.5rem; }
-    .venue-slides-wrap {
+    .venue-outer { position: relative; margin-top: 2.5rem; }
+    .venue-slider {
       overflow: hidden; border-radius: 1.25rem;
       border: 1px solid rgba(28,69,50,0.09);
       box-shadow: 0 2px 16px rgba(28,69,50,0.08);
     }
-    .venue-slides { display: flex; transition: transform 0.45s cubic-bezier(0.4,0,0.2,1); }
-    .venue-slide { flex-shrink: 0; width: 100%; background: white; }
+    .venue-slides { display: flex; gap: 1.25rem; transition: transform 0.45s cubic-bezier(0.4,0,0.2,1); }
+    /* calc(100% - 5rem) leaves ~60px peek of the next card */
+    .venue-slide { flex-shrink: 0; width: calc(100% - 5rem); background: white; border-radius: 1.125rem; overflow: hidden; }
     .venue-photo {
       width: 100%; height: 268px; overflow: hidden; position: relative;
       background: var(--dark-green);
@@ -354,20 +355,20 @@
     .venue-pro::before { content: '✓'; position: absolute; left: 0; color: #2b7a5c; font-weight: 700; font-size: 0.75rem; }
     .venue-con { color: rgba(28,69,50,0.48); }
     .venue-con::before { content: '–'; position: absolute; left: 0; color: var(--terracotta); font-weight: 700; }
-    /* Arrow buttons */
+    /* Arrow buttons — positioned on .venue-outer so they sit outside the overflow:hidden clip */
     .vslide-btn {
       position: absolute; top: 134px; transform: translateY(-50%);
-      width: 42px; height: 42px; border-radius: 50%;
+      width: 52px; height: 52px; border-radius: 50%;
       background: white; border: none;
-      box-shadow: 0 2px 16px rgba(28,69,50,0.22);
+      box-shadow: 0 3px 20px rgba(28,69,50,0.25);
       display: flex; align-items: center; justify-content: center;
       cursor: pointer; z-index: 10; color: var(--dark-green);
       transition: box-shadow 0.2s, transform 0.15s;
     }
-    .vslide-btn:hover { box-shadow: 0 4px 22px rgba(28,69,50,0.3); transform: translateY(calc(-50% - 1px)); }
-    .vslide-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
-    .vslide-prev { left: -21px; }
-    .vslide-next { right: -21px; }
+    .vslide-btn:hover { box-shadow: 0 6px 28px rgba(28,69,50,0.32); transform: translateY(calc(-50% - 2px)); }
+    .vslide-btn svg { width: 22px; height: 22px; flex-shrink: 0; }
+    .vslide-prev { left: -26px; }
+    .vslide-next { right: -26px; }
     /* Dots */
     .vslide-dots {
       display: flex; justify-content: center; gap: 0.5rem; padding: 0.875rem 0 0;
@@ -705,14 +706,14 @@
       <h2 class="section-heading reveal d1">Where we're<br><span class="accent">looking.</span></h2>
       <p class="section-body reveal d2">No hotel ballrooms. These are our current top picks — locally-owned, character-rich spaces scouted for values fit and capacity. Nothing locked in yet.</p>
 
-      <div class="venue-slider reveal d2" id="venue-slider">
-        <div class="venue-slides-wrap">
+      <div class="venue-outer reveal d2" id="venue-outer">
+        <div class="venue-slider">
           <div class="venue-slides" id="venue-slides">
 
             <!-- Slide 1: G5A Foundation — TOP PICK -->
             <div class="venue-slide">
               <div class="venue-photo">
-                <img src="https://img-cdn.publive.online/fit-in/1280x960/filters:format(webp)/english-betterindia/media/post_attachments/uploads/2025/05/g5a-warehouse-3-1747926877.jpg"
+                <img src="assets/photos/venue-g5a.webp"
                      alt="G5A Foundation, Worli Mumbai"
                      onerror="this.style.display='none'">
                 <div class="venue-photo-bg">
@@ -743,7 +744,7 @@
             <!-- Slide 2: CIRQA Bombay -->
             <div class="venue-slide">
               <div class="venue-photo">
-                <img src="https://societyinteriorsdesign.com/wp-content/uploads/2023/10/CIRQA-Interiors-1024x683.jpg"
+                <img src="assets/photos/venue-cirqa.jpg"
                      alt="CIRQA Bombay interior"
                      onerror="this.style.display='none'">
                 <div class="venue-photo-bg">
@@ -771,7 +772,7 @@
             <!-- Slide 3: antiSOCIAL -->
             <div class="venue-slide">
               <div class="venue-photo">
-                <img src="https://imgmedia.lbb.in/media/2022/08/62fb2d3693483b5d44097ba0_1660628278751.jpg"
+                <img src="assets/photos/venue-antisocial.jpg"
                      alt="antiSOCIAL Mumbai venue"
                      onerror="this.style.display='none'">
                 <div class="venue-photo-bg">
@@ -799,7 +800,7 @@
             <!-- Slide 4: Royal Opera House -->
             <div class="venue-slide">
               <div class="venue-photo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Opera_House%2C_Mumbai.JPG/1200px-Opera_House%2C_Mumbai.JPG"
+                <img src="assets/photos/venue-opera.jpg"
                      alt="Royal Opera House, Mumbai"
                      onerror="this.style.display='none'">
                 <div class="venue-photo-bg">
@@ -827,7 +828,7 @@
             <!-- Slide 5: Method Gallery -->
             <div class="venue-slide">
               <div class="venue-photo">
-                <img src="https://themethod.art/cdn/shop/files/Sehaj_Malik_Points_of_Contact_Install_3_Method_Art.jpg"
+                <img src="assets/photos/venue-method.jpg"
                      alt="Method Gallery, Kala Ghoda"
                      onerror="this.style.display='none'">
                 <div class="venue-photo-bg">
@@ -853,17 +854,9 @@
             </div>
 
           </div><!-- /venue-slides -->
-        </div><!-- /venue-slides-wrap -->
+        </div><!-- /venue-slider -->
 
-        <!-- Arrow buttons -->
-        <button class="vslide-btn vslide-prev" onclick="slideVenue(-1)" aria-label="Previous venue">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <button class="vslide-btn vslide-next" onclick="slideVenue(1)" aria-label="Next venue">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-
-        <!-- Dots -->
+        <!-- Dots — outside overflow:hidden, natural flow below the card -->
         <div class="vslide-dots" id="vslide-dots">
           <button class="vdot active" onclick="goToVenue(0)" aria-label="Venue 1"></button>
           <button class="vdot" onclick="goToVenue(1)" aria-label="Venue 2"></button>
@@ -872,7 +865,15 @@
           <button class="vdot" onclick="goToVenue(4)" aria-label="Venue 5"></button>
         </div>
 
-      </div><!-- /venue-slider -->
+        <!-- Arrow buttons — on .venue-outer, outside overflow:hidden -->
+        <button class="vslide-btn vslide-prev" onclick="slideVenue(-1)" aria-label="Previous venue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="vslide-btn vslide-next" onclick="slideVenue(1)" aria-label="Next venue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+
+      </div><!-- /venue-outer -->
     </div>
   </section>
 
@@ -931,13 +932,18 @@
     function slideVenue(dir) { venueIdx = (venueIdx + dir + venueTotal) % venueTotal; updateVenue(); }
     function goToVenue(idx) { venueIdx = idx; updateVenue(); }
     function updateVenue() {
-      const slides = document.getElementById('venue-slides');
-      if (slides) slides.style.transform = 'translateX(-' + (venueIdx * 100) + '%)';
+      const slidesEl = document.getElementById('venue-slides');
+      if (!slidesEl) return;
+      const slideEl = slidesEl.querySelector('.venue-slide');
+      if (!slideEl) return;
+      // Use pixel offset — accounts for the peek (non-100% slide width) plus gap (1.25rem ≈ 20px)
+      const step = slideEl.offsetWidth + 20;
+      slidesEl.style.transform = `translateX(-${venueIdx * step}px)`;
       document.querySelectorAll('.vdot').forEach((d, i) => d.classList.toggle('active', i === venueIdx));
     }
-    // Touch swipe support
+    // Touch + window resize
     (function() {
-      const wrap = document.getElementById('venue-slider');
+      const wrap = document.getElementById('venue-outer');
       if (!wrap) return;
       let tx = 0;
       wrap.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
@@ -946,6 +952,7 @@
         if (Math.abs(dx) > 40) slideVenue(dx < 0 ? 1 : -1);
       }, { passive: true });
     })();
+    window.addEventListener('resize', updateVenue, { passive: true });
   </script>
 
 </body>
