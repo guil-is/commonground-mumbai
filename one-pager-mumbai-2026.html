@@ -50,18 +50,22 @@
       transform: translateX(-50%); z-index: 200;
       background: rgba(255,255,255,0.94);
       backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-      display: flex; align-items: center; gap: 2.25rem;
-      padding: 0.5rem 0.625rem 0.5rem 1.5rem;
+      display: flex; align-items: center; gap: 0;
+      padding: 0.5rem 0.5rem 0.5rem 1rem;
       border-radius: 50px; border: 1px solid rgba(28,69,50,0.09);
       white-space: nowrap; box-shadow: 0 2px 20px rgba(28,69,50,0.10);
       transition: box-shadow 0.3s, background 0.3s;
     }
     .nav.scrolled { box-shadow: 0 4px 32px rgba(28,69,50,0.16); background: rgba(255,255,255,0.98); }
-    .nav-logo { display: flex; align-items: center; gap: 0.75rem; }
-    .nav-logo img { width: 2.25rem; height: 2.25rem; object-fit: contain; }
+    .nav-logo { display: flex; align-items: center; gap: 0.625rem; margin-right: 2rem; }
+    .nav-logo img { width: 2.125rem; height: 2.125rem; object-fit: contain; }
     .nav-logo-text { font-family: var(--barlow); font-size: 0.875rem; font-weight: 700; color: var(--dark-green); }
-    .nav-back { font-family: var(--mulish); font-size: 0.8rem; font-weight: 600; color: rgba(28,69,50,0.45); transition: color 0.2s; }
-    .nav-back:hover { color: var(--dark-green); }
+    .nav-links { display: flex; align-items: center; gap: 1.875rem; list-style: none; margin-right: 1.5rem; }
+    .nav-links a {
+      font-family: var(--mulish); font-size: 0.875rem; font-weight: 600;
+      color: var(--dark-green); transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--teal); }
     .nav-cta {
       font-family: var(--barlow); font-size: 0.8125rem; font-weight: 800;
       letter-spacing: 0.05em; text-transform: uppercase;
@@ -76,7 +80,7 @@
     .hero {
       padding-top: 5rem;
       background: var(--cream) url('assets/hero-bg.svg') center / cover no-repeat;
-      position: relative; min-height: 72vh;
+      position: relative; min-height: 100svh;
       display: flex; flex-direction: column;
     }
     .hero::before {
@@ -179,7 +183,7 @@
        ================================================================ */
     .concept-grid {
       display: grid; grid-template-columns: 1fr 1fr;
-      gap: 5rem; margin-top: 2.5rem; align-items: start;
+      gap: 5rem; margin-top: 2.5rem; align-items: stretch;
     }
     .concept-body {
       font-family: var(--mulish); font-size: 1.0rem;
@@ -221,22 +225,26 @@
     }
 
     /* Feature rows — right column */
-    .concept-features { display: flex; flex-direction: column; gap: 2.25rem; }
-    .concept-feat { display: flex; align-items: flex-start; gap: 1.25rem; }
+    .concept-features {
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+    .concept-feat { display: flex; align-items: flex-start; gap: 1.5rem; }
     .feat-icon {
-      width: 2.75rem; height: 2.75rem; border-radius: 50%;
+      width: 3.25rem; height: 3.25rem; border-radius: 50%;
       background: var(--dark-green);
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0; color: white;
     }
-    .feat-icon svg { width: 1.125rem; height: 1.125rem; }
+    .feat-icon svg { width: 1.375rem; height: 1.375rem; }
     .feat-label {
-      font-family: var(--barlow); font-size: 0.75rem; font-weight: 800;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--dark-green); margin-bottom: 0.375rem;
+      font-family: var(--barlow); font-size: 1rem; font-weight: 800;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--dark-green); margin-bottom: 0.5rem;
     }
     .feat-desc {
-      font-family: var(--mulish); font-size: 0.9rem;
+      font-family: var(--mulish); font-size: 1rem;
       line-height: 1.65; color: var(--mid-green);
     }
 
@@ -303,6 +311,37 @@
       border-color: rgba(255,255,255,0.38);
       color: white;
     }
+
+    /* ================================================================
+       PARTNERS MARQUEE
+       ================================================================ */
+    .partners-section { background: var(--cream); padding: 4rem 0; overflow: hidden; }
+    .partners-label {
+      font-family: var(--mulish); font-size: 0.8rem; font-weight: 400;
+      color: rgba(28,69,50,0.35); text-align: center; margin-bottom: 2.5rem;
+      letter-spacing: 0.04em;
+    }
+    .marquee-wrap {
+      max-width: 780px; margin: 0 auto; position: relative;
+    }
+    .marquee-wrap::before, .marquee-wrap::after {
+      content: ''; position: absolute; top: 0; bottom: 0;
+      width: 80px; z-index: 2; pointer-events: none;
+    }
+    .marquee-wrap::before { left: 0; background: linear-gradient(to right, var(--cream) 0%, transparent 100%); }
+    .marquee-wrap::after  { right: 0; background: linear-gradient(to left, var(--cream) 0%, transparent 100%); }
+    .marquee-row { overflow: hidden; margin-bottom: 1.75rem; }
+    .marquee-row:last-child { margin-bottom: 0; }
+    .marquee-track {
+      display: flex; gap: 3rem; width: max-content;
+      animation: marquee-left 30s linear infinite;
+    }
+    .marquee-track.reverse { animation: marquee-right 34s linear infinite; }
+    @keyframes marquee-left  { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    @keyframes marquee-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+    .marquee-logo { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; flex-shrink: 0; }
+    .marquee-logo img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; }
+    .marquee-logo span { font-family: var(--mulish); font-size: 0.65rem; color: rgba(28,69,50,0.4); letter-spacing: 0.02em; }
 
     /* ================================================================
        TIERS
@@ -443,20 +482,24 @@
     /* ================================================================
        RESPONSIVE
        ================================================================ */
-    @media (max-width: 900px) {
-      .concept-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    @media (max-width: 960px) {
+      .concept-grid { grid-template-columns: 1fr; gap: 2.5rem; align-items: start; }
+      .concept-features { height: auto; gap: 2rem; justify-content: flex-start; }
       .tiers-grid { grid-template-columns: 1fr; gap: 1rem; }
       .tier-card.featured { order: -1; }
     }
-    @media (max-width: 700px) {
-      .nav { gap: 1rem; padding: 0.4rem 0.5rem 0.4rem 1rem; }
-      .nav-back { display: none; }
+    @media (max-width: 760px) {
+      .nav { padding: 0.4rem 0.4rem 0.4rem 0.875rem; }
+      .nav-links li:not(:last-child) { display: none; }
+      .nav-links { margin-right: 0.75rem; gap: 0; }
+      .nav-logo { margin-right: 0.75rem; }
       .section { padding: 3.5rem 1.25rem; }
       .topics-section { padding: 3.5rem 1.25rem; }
       .cta-section { padding: 3.5rem 1.25rem; }
       .inkind-row { flex-direction: column; gap: 1rem; }
       .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
       .topic-pill { font-size: 0.875rem; padding: 0.625rem 1.375rem; }
+      .marquee-wrap::before, .marquee-wrap::after { width: 40px; }
     }
   </style>
 </head>
@@ -477,7 +520,11 @@
       <img src="assets/ru-logo-circle.png" alt="Regens Unite">
       <div class="nav-logo-text">Common Ground Mumbai</div>
     </div>
-    <a href="index.html" class="nav-back">← Main site</a>
+    <ul class="nav-links">
+      <li><a href="#concept">The Concept</a></li>
+      <li><a href="#topics">Topics</a></li>
+      <li><a href="#tiers">Get Involved</a></li>
+    </ul>
     <a href="mailto:cori@regensunite.earth" class="nav-cta">Get in touch</a>
   </nav>
 
@@ -603,6 +650,55 @@
         <span class="topic-pill">Developer Tools</span>
         <span class="topic-pill">Ethereum Ecosystem</span>
       </div>
+    </div>
+  </section>
+
+
+  <!-- ── PREVIOUS PARTNERS ───────────────────────────────────────── -->
+  <section class="partners-section" id="partners">
+    <p class="partners-label">Previous Partners</p>
+    <div class="marquee-wrap">
+
+      <!-- Row 1 → left -->
+      <div class="marquee-row">
+        <div class="marquee-track">
+          <div class="marquee-logo"><img src="https://cdn.prod.website-files.com/6672eca6f051db1e5187314e/667ad465c274e532cbf5c68e_Regens%20Unite.jpg" alt="Regens Unite"><span>Regens Unite</span></div>
+          <div class="marquee-logo"><img src="https://cdn.prod.website-files.com/6672eca6f051db1e5187314e/667ad465281a668ea7daa16d_Optimism.png" alt="Optimism"><span>Optimism</span></div>
+          <div class="marquee-logo"><img src="https://cdn.prod.website-files.com/6672eca6f051db1e5187314e/667ad46565ba80680e5ac3f9_metagov.png" alt="Metagov"><span>Metagov</span></div>
+          <div class="marquee-logo"><img src="https://cdn.prod.website-files.com/6672eca6f051db1e5187314e/667ad4649622b72308f223d9_Circles_400x400.jpg" alt="Circles"><span>Circles</span></div>
+          <div class="marquee-logo"><img src="https://cdn.prod.website-files.com/6672eca6f051db1e5187314e/667ad4652f32b26c7bda6d08_Gnosis.png" alt="Gnosis"><span>Gnosis</span></div>
+          <div class="marquee-logo"><img src="https://cdn.prod.website-files.com/6672eca6f051db1e5187314e/667ad465fb8b3b517b8850b0_Octant.png" alt="Octant"><span>Octant</span></div>
+          <div class="marquee-logo"><img src="https://cdn.prod.website-files.com/6672eca6f051db1e5187314e/667ad465cc8ba948bf67c795_Stellar.png" alt="Stellar"><span>Stellar</span></div>
+          <!-- duplicate for seamless loop -->
+          <div class="marquee-logo"><img src="https://cdn.prod.website-files.com/6672eca6f051db1e5187314e/667ad465c274e532cbf5c68e_Regens%20Unite.jpg" alt="Regens Unite"><span>Regens Unite</span></div>
+          <div class="marquee-logo"><img src="https://cdn.prod.website-files.com/6672eca6f051db1e5187314e/667ad465281a668ea7daa16d_Optimism.png" alt="Optimism"><span>Optimism</span></div>
+          <div class="marquee-logo"><img src="https://cdn.prod.website-files.com/6672eca6f051db1e5187314e/667ad46565ba80680e5ac3f9_metagov.png" alt="Metagov"><span>Metagov</span></div>
+          <div class="marquee-logo"><img src="https://cdn.prod.website-files.com/6672eca6f051db1e5187314e/667ad4649622b72308f223d9_Circles_400x400.jpg" alt="Circles"><span>Circles</span></div>
+          <div class="marquee-logo"><img src="https://cdn.prod.website-files.com/6672eca6f051db1e5187314e/667ad4652f32b26c7bda6d08_Gnosis.png" alt="Gnosis"><span>Gnosis</span></div>
+          <div class="marquee-logo"><img src="https://cdn.prod.website-files.com/6672eca6f051db1e5187314e/667ad465fb8b3b517b8850b0_Octant.png" alt="Octant"><span>Octant</span></div>
+          <div class="marquee-logo"><img src="https://cdn.prod.website-files.com/6672eca6f051db1e5187314e/667ad465cc8ba948bf67c795_Stellar.png" alt="Stellar"><span>Stellar</span></div>
+        </div>
+      </div>
+
+      <!-- Row 2 ← right -->
+      <div class="marquee-row">
+        <div class="marquee-track reverse">
+          <div class="marquee-logo"><img src="https://cdn.prod.website-files.com/6672eca6f051db1e5187314e/667ad464bf43d35cdbba2658_Giveth.png" alt="Giveth"><span>Giveth</span></div>
+          <div class="marquee-logo"><img src="https://cdn.prod.website-files.com/6672eca6f051db1e5187314e/667ad465013716c3bcf66841_Citizen%20Wallet.png" alt="Citizen Wallet"><span>Citizen Wallet</span></div>
+          <div class="marquee-logo"><img src="https://cdn.prod.website-files.com/6672eca6f051db1e5187314e/6682bcffd150ff1a2f34fed6_ethichub.jpg" alt="EthicHub"><span>EthicHub</span></div>
+          <div class="marquee-logo"><img src="https://cdn.prod.website-files.com/6672eca6f051db1e5187314e/667ad464bb0771d061545e05_Celo.png" alt="Celo"><span>Celo</span></div>
+          <div class="marquee-logo"><img src="https://cdn.prod.website-files.com/6672eca6f051db1e5187314e/6689291d0df3402b68d0b6f6_GloDollar.jpg" alt="Glo Dollar"><span>Glo Dollar</span></div>
+          <div class="marquee-logo"><img src="https://cdn.prod.website-files.com/6672eca6f051db1e5187314e/6686abaf71c97477aa4fa9a7_BanklessAcademy.jpg" alt="Bankless Academy"><span>Bankless Academy</span></div>
+          <!-- duplicate for seamless loop -->
+          <div class="marquee-logo"><img src="https://cdn.prod.website-files.com/6672eca6f051db1e5187314e/667ad464bf43d35cdbba2658_Giveth.png" alt="Giveth"><span>Giveth</span></div>
+          <div class="marquee-logo"><img src="https://cdn.prod.website-files.com/6672eca6f051db1e5187314e/667ad465013716c3bcf66841_Citizen%20Wallet.png" alt="Citizen Wallet"><span>Citizen Wallet</span></div>
+          <div class="marquee-logo"><img src="https://cdn.prod.website-files.com/6672eca6f051db1e5187314e/6682bcffd150ff1a2f34fed6_ethichub.jpg" alt="EthicHub"><span>EthicHub</span></div>
+          <div class="marquee-logo"><img src="https://cdn.prod.website-files.com/6672eca6f051db1e5187314e/667ad464bb0771d061545e05_Celo.png" alt="Celo"><span>Celo</span></div>
+          <div class="marquee-logo"><img src="https://cdn.prod.website-files.com/6672eca6f051db1e5187314e/6689291d0df3402b68d0b6f6_GloDollar.jpg" alt="Glo Dollar"><span>Glo Dollar</span></div>
+          <div class="marquee-logo"><img src="https://cdn.prod.website-files.com/6672eca6f051db1e5187314e/6686abaf71c97477aa4fa9a7_BanklessAcademy.jpg" alt="Bankless Academy"><span>Bankless Academy</span></div>
+        </div>
+      </div>
+
     </div>
   </section>
 
