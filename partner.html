@@ -504,6 +504,13 @@
        VENUE
        ================================================================ */
     .venue-section { background: var(--cream-light); }
+    .venue-map-link {
+      display: inline-flex; align-items: center; gap: 0.375rem;
+      font-family: var(--mulish); font-size: 0.8125rem; font-weight: 600;
+      color: var(--teal); margin-bottom: 2rem; margin-top: 0.375rem;
+      transition: color 0.2s;
+    }
+    .venue-map-link:hover { color: var(--dark-green); }
     .venue-grid {
       display: grid; grid-template-columns: 1fr 1.25fr;
       gap: 4rem; margin-top: 2.5rem; align-items: start;
@@ -816,9 +823,11 @@
     <div class="section-inner">
 
       <p class="section-label reveal">The Venue</p>
-      <h2 class="section-heading reveal d1">
-        Pioneer Hall.<br><span class="accent">Mumbai.</span>
-      </h2>
+      <h2 class="section-heading reveal d1">Pioneer Hall.</h2>
+      <a href="https://maps.app.goo.gl/W6ozaaq8ZWg3bSzp9" target="_blank" rel="noopener" class="venue-map-link reveal d2">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Bandra West, Mumbai · View on Google Maps
+      </a>
 
       <div class="venue-grid">
 
