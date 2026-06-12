@@ -622,10 +622,10 @@
     /* Full-width video below grid */
     .venue-vid-full { margin-top: 2.75rem; }
     .venue-vid-full .vid-thumb { border-radius: 1.375rem; }
-    .venue-vid-caption {
-      font-family: var(--mulish); font-size: 0.8rem; font-weight: 600;
-      color: rgba(28,69,50,0.45); text-align: center;
-      margin-top: 0.625rem; letter-spacing: 0.01em;
+    .venue-vid-title {
+      font-family: var(--barlow); font-size: 1.125rem; font-weight: 800;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--dark-green); margin-bottom: 0.875rem;
     }
     @keyframes pulse {
       0%, 100% { opacity: 1; } 50% { opacity: 0.4; }
@@ -876,12 +876,12 @@
       <!-- Stats bar -->
       <div class="venue-stats reveal d2">
         <div class="venue-stat">
-          <div class="venue-stat-num">200+</div>
+          <div class="venue-stat-num">200</div>
           <div class="venue-stat-label">guests capacity</div>
         </div>
         <div class="venue-stat">
-          <div class="venue-stat-num">Nov 1–6</div>
-          <div class="venue-stat-label">6 days available</div>
+          <div class="venue-stat-num">From Nov 1st</div>
+          <div class="venue-stat-label">Available</div>
         </div>
       </div>
 
@@ -937,6 +937,7 @@
 
       <!-- Full-width video -->
       <div class="venue-vid-full reveal d3">
+        <p class="venue-vid-title">Pioneer Hall is where ETHMumbai 2024 took place</p>
         <div class="vid-thumb" onclick="openVenueVideo()" role="button" tabindex="0" aria-label="Watch Pioneer Hall venue video">
           <iframe
             class="vid-bg-iframe"
@@ -951,7 +952,6 @@
             </div>
           </div>
         </div>
-        <p class="venue-vid-caption">Pioneer Hall is where ETHMumbai 2024 took place</p>
       </div>
 
     </div>
@@ -968,8 +968,31 @@
 
       <div class="tiers-grid">
 
-        <!-- Day Partner -->
+        <!-- Full day, full venue -->
         <div class="tier-card featured reveal d1">
+          <div class="tier-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <div class="tier-name">Full Day · Full Venue</div>
+          <div class="tier-price-block">
+            <span class="tier-price">$18,000</span>
+            <div class="tier-per">per day · up to 200 guests</div>
+          </div>
+          <hr class="tier-divider">
+          <p class="tier-desc">Own the entire space for a full day — all rooms, the outdoor garden, and the bar. Your speakers, your agenda, your community.</p>
+          <ul class="tier-feats">
+            <li class="tier-feat">Full use of all rooms + outdoor garden</li>
+            <li class="tier-feat">Full day of programming (your format)</li>
+            <li class="tier-feat">Co-branding on-site &amp; across the week</li>
+          </ul>
+          <div class="tier-avail">Limited slots</div>
+        </div>
+
+        <!-- Full day, one room -->
+        <div class="tier-card reveal d2">
           <div class="tier-icon-wrap">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
               <rect x="3" y="4" width="18" height="17" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/>
@@ -977,68 +1000,33 @@
               <path d="M8 14l2.5 2.5L16 11"/>
             </svg>
           </div>
-          <div class="tier-name">Day Partner</div>
+          <div class="tier-name">Full Day · One Room</div>
           <div class="tier-price-block">
-            <span class="tier-price">$15,000</span>
-            <div class="tier-per">per day slot</div>
+            <span class="tier-price">$6,000</span>
+            <div class="tier-per">per day · up to 50 guests</div>
           </div>
           <hr class="tier-divider">
-          <p class="tier-desc">Own a full day: your speakers, your agenda, your community. Full creative control inside the shared hub.</p>
+          <p class="tier-desc">Book a dedicated room for the full day and run your own focused programme in an intimate setting.</p>
           <ul class="tier-feats">
-            <li class="tier-feat">Full day of programming (your format)</li>
-            <li class="tier-feat">Co-branding all week on-site &amp; online</li>
-            <li class="tier-feat">Featured in all press &amp; outreach</li>
+            <li class="tier-feat">Dedicated room for the full day</li>
+            <li class="tier-feat">Run your own programme</li>
+            <li class="tier-feat">Co-branding on room materials</li>
           </ul>
-          <div class="tier-avail">5 slots available</div>
+          <div class="tier-avail">Open</div>
         </div>
 
-        <!-- Programme Partner -->
-        <div class="tier-card reveal d2">
-          <div class="tier-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="3" width="20" height="14" rx="2"/>
-              <line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
-              <line x1="7" y1="9" x2="17" y2="9"/><line x1="7" y1="13" x2="13" y2="13"/>
-            </svg>
-          </div>
-          <div class="tier-name">Programme Partner</div>
-          <div class="tier-price-block">
-            <span class="tier-price">$8,000</span>
-            <div class="tier-per">per session block</div>
-          </div>
-          <hr class="tier-divider">
-          <p class="tier-desc">Host a half-day track or major evening session with a named slot in the public programme.</p>
-          <ul class="tier-feats">
-            <li class="tier-feat">Half-day track or evening session</li>
-            <li class="tier-feat">Named in the public programme</li>
-            <li class="tier-feat">Co-branding on session materials</li>
-          </ul>
-          <div class="tier-avail">Limited availability</div>
-        </div>
-
-        <!-- Community Partner -->
+        <!-- Half-day -->
         <div class="tier-card reveal d3">
           <div class="tier-icon-wrap">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
             </svg>
           </div>
-          <div class="tier-name">Community Partner</div>
-          <div class="tier-price-block">
-            <span class="tier-price">$4,000</span>
-            <div class="tier-per">week-long presence</div>
-          </div>
-          <hr class="tier-divider">
-          <p class="tier-desc">Branded presence at the hub for the full week, with one activation slot and logo across all materials.</p>
-          <ul class="tier-feats">
-            <li class="tier-feat">Branded presence all week</li>
-            <li class="tier-feat">One session or activation slot</li>
-            <li class="tier-feat">Logo across all materials</li>
-          </ul>
-          <div class="tier-avail">Open</div>
+          <div class="tier-name">Half-Day Slot</div>
+          <hr class="tier-divider" style="margin-top: 1rem;">
+          <p class="tier-desc">For half-day pricing, please book a call. We'll work out what fits your goals and the programme.</p>
+          <a href="https://calendly.com/corinnaschlicht/meet" class="btn-terra" style="margin-top: 1.25rem; align-self: flex-start;">Book a call →</a>
         </div>
 
       </div>
